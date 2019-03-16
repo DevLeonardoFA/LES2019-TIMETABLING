@@ -21,23 +21,28 @@
       <Pane fx:id="pane_mainmenu" prefHeight="420.0" prefWidth="292.0">
          <children>
             <Button fx:id="btn_Conf" layoutX="33.0" layoutY="29.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="182.0" text="Configurações" />
-            <Button fx:id="btn_Report" layoutX="33.0" layoutY="262.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Relatório" />
-            <Button fx:id="btn_Hour" layoutX="33.0" layoutY="210.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Horario" />
+            <Button fx:id="btn_Report" layoutX="33.0" layoutY="262.0" mnemonicParsing="false" onAction="#btn_report_open_screen" prefHeight="39.0" prefWidth="182.0" text="Relatório" />
+            <Button fx:id="btn_Hour" layoutX="33.0" layoutY="210.0" mnemonicParsing="false" onAction="#btn_hour_open_screen" prefHeight="39.0" prefWidth="182.0" text="Horario" />
             <Button fx:id="btn_Register" layoutX="33.0" layoutY="158.0" mnemonicParsing="false" onAction="#btn_register_open_screen" prefHeight="39.0" prefWidth="182.0" text="Cadastro" />
          </children>
       </Pane>
-      <Pane fx:id="pane_cad" prefHeight="470.0" prefWidth="1200.0" GridPane.columnIndex="2">
+      <Pane fx:id="pane_cad" prefHeight="420.0" prefWidth="164.0" styleClass="teste" visible="false" GridPane.columnIndex="1">
+         <children>
+            <Button layoutX="31.0" layoutY="35.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Cursos" />
+            <Button layoutX="31.0" layoutY="96.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Professores" />
+            <Button layoutX="31.0" layoutY="157.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Materias" />
+         </children>
+      </Pane>
+       <Pane fx:id="pane_cad_int_curso" prefHeight="470.0" prefWidth="1200.0" styleClass="testea" visible="false" GridPane.columnIndex="2">
          <children>
             <Label layoutX="75.0" layoutY="34.0" text="Nome do Curso" />
             <TextField layoutX="75.0" layoutY="50.0" prefHeight="26.0" prefWidth="589.0" />
             <Button layoutX="623.0" layoutY="371.0" mnemonicParsing="false" text="Concluir" />
          </children>
       </Pane>
-      <Pane fx:id="pane_cad_int_curso" prefHeight="420.0" prefWidth="164.0" GridPane.columnIndex="1">
+      <Pane fx:id="pane_hour" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1">
          <children>
-            <Button layoutX="31.0" layoutY="35.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Cursos" />
-            <Button layoutX="31.0" layoutY="96.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Professores" />
-            <Button layoutX="31.0" layoutY="157.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Materias" />
+            <Button layoutX="85.0" layoutY="55.0" mnemonicParsing="false" text="Button" />
          </children>
       </Pane>
    </children>

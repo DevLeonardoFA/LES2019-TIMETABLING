@@ -3,6 +3,10 @@ package timetable;
 import java.io.File;
 import java.net.URL;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +17,7 @@ public class main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+				
 		Stage newstage = new Stage();
 		Parent root = null;
 
