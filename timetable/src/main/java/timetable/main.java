@@ -14,16 +14,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
-
 import model.Curso;
-
 
 public class main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-				
+
 		Stage newstage = new Stage();
 		Parent root = null;
 
@@ -39,13 +36,7 @@ public class main extends Application {
 		newstage.setScene(newScene);
 		newstage.setTitle(null);
 		newstage.show();
-		
 
-		Curso mCurso = new Curso();
-		DaoGeneric<Curso> daoGeneric = new DaoGeneric<Curso>();
-		
-		daoGeneric.salvarAtualizar(mCurso);
-		
 	}
 
 	public static void main(String[] args) {

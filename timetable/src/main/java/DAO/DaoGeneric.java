@@ -8,8 +8,6 @@ import javax.persistence.EntityTransaction;
 import Util.hibernateUtil;
 
 public class DaoGeneric<E> {
-
-	
 	
 	private EntityManager em = hibernateUtil.getEntityManager();	
 	
@@ -37,7 +35,7 @@ public class DaoGeneric<E> {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		em.createNativeQuery("delete from " + entidade.getClass().getSimpleName() 
-				+ " where id =" +id).executeUpdate();
+				+ " where id =" + id).executeUpdate();
 		transaction.commit();
 	}
 
