@@ -3,17 +3,21 @@ package timetable;
 import java.io.File;
 import java.net.URL;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+//import javax.persistence.EntityManager;
+//import javax.persistence.EntityManagerFactory;
+//import javax.persistence.Persistence;
 
+import DAO.DaoGeneric;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-//import jpahibernate.dao.DaoGeneric;
+
+
+
 import model.Curso;
+
 
 public class main extends Application {
 
@@ -36,10 +40,12 @@ public class main extends Application {
 		newstage.setTitle(null);
 		newstage.show();
 		
-	/*	Curso mCurso = new Curso();
-		DaoGeneric daoGeneric = new DaoGeneric();
+
+		Curso mCurso = new Curso();
+		DaoGeneric<Curso> daoGeneric = new DaoGeneric<Curso>();
 		
-		daoGeneric.salvarAtualizar(mCurso);*/
+		daoGeneric.salvarAtualizar(mCurso);
+		
 	}
 
 	public static void main(String[] args) {

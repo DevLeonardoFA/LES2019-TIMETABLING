@@ -7,17 +7,18 @@ import javax.persistence.*;
 public class Curso {
 
 	@Id
-	@GeneratedValue
-	private long id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
 	
-	@Column(name="Nome do Curso")
+	@Column(name="Nome_do_Curso")
 	private String Nome_curso;
 
-	public long getId() {
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

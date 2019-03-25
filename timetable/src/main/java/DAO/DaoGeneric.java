@@ -1,11 +1,11 @@
-package jpaHibernate.dao;
+package DAO;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import jpaHibernate.util.hibernateUtil;
+import Util.hibernateUtil;
 
 public class DaoGeneric<E> {
 
@@ -45,7 +45,7 @@ public class DaoGeneric<E> {
 	
 	
 	public List<E> listar(Class<E> entidade){
-		List<E> lst = em.createQuery("from " +entidade.getName()).getResultList();
+		List<E> lst = em.createQuery("from " + entidade.getName()).getResultList();
 		
 		return lst;
 	}
