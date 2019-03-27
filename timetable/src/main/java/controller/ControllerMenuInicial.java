@@ -1,6 +1,8 @@
 package controller;
 
 import DAO.DaoGeneric;
+import DAO.DaoList;
+import antlr.collections.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
@@ -103,37 +105,38 @@ public class ControllerMenuInicial {
 
 //------------------------------------------------------------
 
-	@FXML TextField txtEmailPro;
-	@FXML TextField txtNamePro;
-	@FXML TextField txtNomeMateria;
+	@FXML TextField txtEmailProfessor;
+	@FXML TextField txtNameProfessor;
+	@FXML TextField txtNameMatter;
+	@FXML TextField txtCurse_name;
 
 	public void BtnCadastrarCurso() {
 
 		DaoGeneric<Curso> objDaoG = new DaoGeneric<Curso>();
-		ObjCadCurso.setNome_curso(txtCurso.getText());
+		
+		ObjCadCurso.setName(txtCurse_name.getText());
 		objDaoG.salvarAtualizar(ObjCadCurso);
 		
-		txtCurso.setText("");
+		txtCurse_name.setText("");
 	}
 
 	public void BtnCadastrarProfessor() {
 
 		DaoGeneric<Professor> objDaoG = new DaoGeneric<Professor>();
-		ObjCadPro.setName(txtNamePro.getText());
-		ObjCadPro.setEmail(txtEmailPro.getText());
+		ObjCadPro.setName(txtNameProfessor.getText());
+		ObjCadPro.setEmail(txtEmailProfessor.getText());
 		objDaoG.salvarAtualizar(ObjCadPro);
 		
-		txtEmailPro.setText("");
-		txtNamePro.setText("");
+		txtEmailProfessor.setText("");
+		txtNameProfessor.setText("");
+		
 	}
 
 	public void BtnCadastrarMateria() {
 		DaoGeneric<Materia> objDaoG = new DaoGeneric<Materia>();
 		
-		ObjCadMat.setNome(txtNomeMateria.getText());
+		ObjCadMat.setName(txtNameMatter.getText());
 		objDaoG.salvarAtualizar(ObjCadMat);
-		
-		txtNomeMateria.setText("");
 	}
 
 	private Object mainScreen() {

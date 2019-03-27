@@ -11,9 +11,8 @@ public class Curso {
 	private Long id;
 	
 	@Column(name="Nome_do_Curso")
-	private String Nome_curso;
+	private String name;
 
-	
 	public Long getId() {
 		return id;
 	}
@@ -22,13 +21,15 @@ public class Curso {
 		this.id = id;
 	}
 
-	public String getNome_curso() {
-		return Nome_curso;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome_curso(String nome_curso) {
-		Nome_curso = nome_curso;
+	public void setName(String name) {
+		this.name = name;
 	}
+
+	
 
 	
 }

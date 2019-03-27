@@ -16,7 +16,7 @@ public class Professor {
 	private String Email;
 	
 	@Column(name="grau")
-	private int Grau;
+	private int Degree;
 
 	public long getId() {
 		return Id;
@@ -42,12 +42,12 @@ public class Professor {
 		Email = email;
 	}
 
-	public int getGrau() {
-		return Grau;
+	public int getDegree() {
+		return Degree;
 	}
 
-	public void setGrau(int grau) {
-		Grau = grau;
+	public void setDegree(int degree) {
+		Degree = degree;
 	}
-	
+
 }

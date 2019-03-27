@@ -11,13 +11,13 @@ public class Materia {
 	private long Id;
 	
 	@Column(name="nome")
-	private String nome;
+	private String name;
 	
 	@Column(name="profissional")
-	private String profissional;
+	private String professional;
 	
 	@Column(name="periodo")
-	private String periodo;
+	private String period;
 
 	public long getId() {
 		return Id;
@@ -27,30 +27,29 @@ public class Materia {
 		Id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getProfissional() {
-		return profissional;
+	public String getProfessional() {
+		return professional;
 	}
 
-	public void setProfissional(String profissional) {
-		this.profissional = profissional;
+	public void setProfessional(String professional) {
+		this.professional = professional;
 	}
 
-	public String getPeriodo() {
-		return periodo;
+	public String getPeriod() {
+		return period;
 	}
 
-	public void setPeriodo(String periodo) {
-		this.periodo = periodo;
+	public void setPeriod(String period) {
+		this.period = period;
 	}
-	
 	
 	
 }

@@ -73,11 +73,11 @@
 			<children>
 				<Button fx:id="BtnCadastrarPro" onAction="#BtnCadastrarProfessor" layoutX="633.0" layoutY="380.0"
 					mnemonicParsing="false" text="Concluir" />
-				<TextField fx:id="txtNamePro" layoutX="44.0" layoutY="42.0" prefHeight="26.0"
+				<TextField fx:id="txtNameProfessor" layoutX="44.0" layoutY="42.0" prefHeight="26.0"
 					prefWidth="657.0" />
 				<Label layoutX="44.0" layoutY="26.0" text="Nome do Professor" />
 				<Label layoutX="44.0" layoutY="84.0" text="E-mail" />
-				<TextField fx:id="txtEmailPro" layoutX="44.0" layoutY="100.0"
+				<TextField fx:id="txtEmailProfessor" layoutX="44.0" layoutY="100.0"
 					prefHeight="26.0" prefWidth="657.0" />
 			</children>
 		</Pane>
@@ -88,7 +88,7 @@
 				<Label layoutX="35.0" layoutY="77.0" text="Pertencente a:" />
 				<Label layoutX="35.0" layoutY="139.0" text="Profissional:" />
 				<Label layoutX="35.0" layoutY="210.0" text="Periodo:" />
-				<TextField fx:id="txtNomeMateria" layoutX="35.0" layoutY="36.0" prefHeight="26.0"
+				<TextField fx:id="txtNameMatter" layoutX="35.0" layoutY="36.0" prefHeight="26.0"
 					prefWidth="657.0" />
 				<RadioButton layoutX="39.0" layoutY="233.0"
 					mnemonicParsing="false" text="Manhã" />
