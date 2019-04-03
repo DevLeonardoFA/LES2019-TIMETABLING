@@ -10,11 +10,10 @@ public class DaoList<E> {
 
 	private EntityManager em = hibernateUtil.getEntityManager();
 	
-	public List<E> listarNomes(String select,Class<E> entidade){
+	public List<E> listarNome(Class<E> entidade){
+		List<E> lst = em.createQuery("Select name from " + entidade.getName()).getResultList();
 		
-		List<E> lstname = em.createQuery("select" + select + "from " + entidade.getName()).getResultList();
-		
-		return lstname;
+		return lst;
 	}
 	
 }

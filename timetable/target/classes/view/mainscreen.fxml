@@ -3,12 +3,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <GridPane minHeight="-Infinity" minWidth="-Infinity"
 	prefHeight="420.0" prefWidth="1200.0"
@@ -17,102 +20,237 @@
 	fx:controller="controller.ControllerMenuInicial">
 	<columnConstraints>
 		<ColumnConstraints hgrow="SOMETIMES"
-			maxWidth="293.0" minWidth="110.0" prefWidth="250.0" />
+			maxWidth="293.0" minWidth="110.0" prefWidth="177.0" />
 		<ColumnConstraints hgrow="SOMETIMES"
-			maxWidth="243.0" minWidth="0.0" prefWidth="232.0" />
+			maxWidth="304.0" minWidth="0.0" prefWidth="187.0" />
 		<ColumnConstraints hgrow="SOMETIMES"
-			maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="719.0" />
+			maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="836.0" />
 	</columnConstraints>
 	<rowConstraints>
 		<RowConstraints minHeight="10.0" prefHeight="30.0"
 			vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<Pane fx:id="pane_mainmenu" prefHeight="420.0" prefWidth="292.0">
+		<Pane fx:id="pane_mainmenu" prefHeight="420.0" prefWidth="172.0"
+			style="-fx-background-color: D74444;">
 			<children>
-				<Button fx:id="btn_Conf" layoutX="33.0" layoutY="29.0"
-					mnemonicParsing="false" prefHeight="56.0" prefWidth="182.0"
-					text="Configurações" />
-				<Button fx:id="btn_Report" layoutX="33.0" layoutY="262.0"
-					mnemonicParsing="false" onAction="#BtnReportOpenScreen"
-					prefHeight="39.0" prefWidth="182.0" text="Relatório" />
-				<Button fx:id="btn_Hour" layoutX="33.0" layoutY="210.0"
-					mnemonicParsing="false" onAction="#BtnHourOpenScreen"
-					prefHeight="39.0" prefWidth="182.0" text="Horario" />
-				<Button fx:id="btn_Register" layoutX="33.0" layoutY="158.0"
-					mnemonicParsing="false" onAction="#BtnRegisterOpenScreen"
-					prefHeight="39.0" prefWidth="182.0" text="Cadastro" />
+				<Button fx:id="btn_Register" graphicTextGap="25.0"
+					layoutY="162.0" mnemonicParsing="false"
+					onAction="#BtnRegisterOpenScreen" prefHeight="48.0"
+					prefWidth="165.0" style="-fx-background-color: transparent;"
+					text="CADASTRO" textFill="WHITE">
+					<graphic>
+						<ImageView fitHeight="26.0" fitWidth="35.0"
+							pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@images/System/Main%20Menu/Cadastro.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
+				<Button fx:id="btn_Hour" graphicTextGap="30.0"
+					layoutY="210.0" mnemonicParsing="false"
+					onAction="#BtnHourOpenScreen" prefHeight="48.0" prefWidth="155.0"
+					style="-fx-background-color: transparent;" text="HORÁRIO"
+					textFill="WHITE">
+					<graphic>
+						<ImageView fitHeight="32.0" fitWidth="27.0"
+							pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@images/System/Main%20Menu/Horario.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
+				<Button fx:id="btn_Report" graphicTextGap="25.0"
+					layoutY="258.0" mnemonicParsing="false"
+					onAction="#BtnReportOpenScreen" prefHeight="48.0" prefWidth="172.0"
+					style="-fx-background-color: transparent;" text="RELATÓRIOS"
+					textFill="WHITE">
+					<graphic>
+						<ImageView fitHeight="28.0" fitWidth="24.0"
+							pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@images/System/Main%20Menu/Relatorio.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
 			</children>
 		</Pane>
 		<Pane fx:id="pane_cad" prefHeight="420.0" prefWidth="164.0"
-			styleClass="teste" visible="false" GridPane.columnIndex="1">
+			style="-fx-background-color: C4C4C4;" styleClass="teste"
+			visible="false" GridPane.columnIndex="1">
 			<children>
-				<Button fx:id="btn_reg_curso" layoutX="31.0" layoutY="35.0"
-					mnemonicParsing="false" onAction="#BtnOpenCurInt"
-					prefHeight="39.0" prefWidth="182.0" text="Cursos" />
-				<Button fx:id="btn_reg_professor" layoutX="31.0"
-					layoutY="96.0" mnemonicParsing="false" onAction="#BtnOpenProInt"
-					prefHeight="39.0" prefWidth="182.0" text="Professores" />
-				<Button fx:id="btn_reg_materia" layoutX="31.0"
-					layoutY="157.0" mnemonicParsing="false"
-					onAction="#BtnOpenMatInt" prefHeight="39.0" prefWidth="182.0"
-					text="Materias" />
+				<Button fx:id="btn_reg_curso" graphicTextGap="25.0"
+					layoutX="3.0" layoutY="168.0" mnemonicParsing="false"
+					onAction="#BtnOpenCurInt" prefHeight="39.0" prefWidth="148.0"
+					style="-fx-background-color: transparent;" text="CURSOS">
+					<graphic>
+						<ImageView fitHeight="26.0" fitWidth="35.0"
+							pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@images/System/Register%20menu/curso.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
+				<Button fx:id="btn_reg_professor" graphicTextGap="25.0"
+					layoutX="12.0" layoutY="216.0" mnemonicParsing="false"
+					onAction="#BtnOpenProInt" prefHeight="39.0" prefWidth="172.0"
+					style="-fx-background-color: transparent;" text="PROFESSORES">
+					<graphic>
+						<ImageView fitHeight="26.0" fitWidth="35.0"
+							pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@images/System/Register%20menu/prof.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
+				<Button fx:id="btn_reg_materia" graphicTextGap="25.0"
+					layoutX="10.0" layoutY="263.0" mnemonicParsing="false"
+					onAction="#BtnOpenMatInt" prefHeight="39.0" prefWidth="148.0"
+					style="-fx-background-color: transparent;" text="MATERIAS">
+					<graphic>
+						<ImageView fitHeight="26.0" fitWidth="35.0"
+							pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@images/System/Register%20menu/materias.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
 			</children>
 		</Pane>
 		<Pane fx:id="pane_hour" prefHeight="200.0" prefWidth="200.0"
-			visible="false" GridPane.columnIndex="1">
+			style="-fx-background-color: D4D4D4;" visible="false"
+			GridPane.columnIndex="1">
 			<children>
-				<Button layoutX="25.0" layoutY="31.0" mnemonicParsing="false"
-					prefHeight="39.0" prefWidth="182.0" text="Gerar Grade" />
-				<Button layoutX="25.0" layoutY="85.0" mnemonicParsing="false"
-					prefHeight="39.0" prefWidth="182.0" text="Ler Arquivo" />
+				<Button layoutX="20.0" layoutY="167.0"
+					mnemonicParsing="false" prefHeight="39.0" prefWidth="148.0"
+					style="-fx-background-color: transparent;" text="GERAR GRADE" />
+				<Button layoutX="20.0" layoutY="213.0"
+					mnemonicParsing="false" prefHeight="39.0" prefWidth="148.0"
+					style="-fx-background-color: transparent;" text="LER ARQUIVO" />
 			</children>
 		</Pane>
 		<Pane fx:id="pane_cad_int_professor" prefHeight="200.0"
 			prefWidth="200.0" visible="false" GridPane.columnIndex="2">
 			<children>
-				<Button fx:id="BtnCadastrarPro" onAction="#BtnCadastrarProfessor" layoutX="633.0" layoutY="380.0"
-					mnemonicParsing="false" text="Concluir" />
-				<TextField fx:id="txtNamePro" layoutX="44.0" layoutY="42.0" prefHeight="26.0"
-					prefWidth="657.0" />
-				<Label layoutX="44.0" layoutY="26.0" text="Nome do Professor" />
-				<Label layoutX="44.0" layoutY="84.0" text="E-mail" />
-				<TextField fx:id="txtEmailPro" layoutX="44.0" layoutY="100.0"
-					prefHeight="26.0" prefWidth="657.0" />
+				<Button fx:id="BtnCadastrarPro" layoutX="636.0"
+					layoutY="380.0" mnemonicParsing="false"
+					onAction="#BtnCadastrarProfessor" text="Concluir" />
+				<TextField fx:id="txtNameProfessor" layoutX="28.0"
+					layoutY="50.0" prefHeight="26.0" prefWidth="657.0" />
+				<Label layoutX="27.0" layoutY="33.0" text="NOME DO PROFESSOR">
+					<font>
+						<Font size="11.0" />
+					</font>
+				</Label>
+				<Label layoutX="29.0" layoutY="95.0" text="E-MAIL">
+					<font>
+						<Font size="11.0" />
+					</font>
+				</Label>
+				<TextField fx:id="txtEmailProfessor" layoutX="29.0"
+					layoutY="111.0" prefHeight="26.0" prefWidth="657.0" />
 			</children>
 		</Pane>
 		<Pane fx:id="pane_cad_int_materia" prefHeight="200.0"
 			prefWidth="200.0" visible="false" GridPane.columnIndex="2">
 			<children>
-				<Label layoutX="35.0" layoutY="20.0" text="Nome da Materia" />
-				<Label layoutX="35.0" layoutY="77.0" text="Pertencente a:" />
-				<Label layoutX="35.0" layoutY="139.0" text="Profissional:" />
-				<Label layoutX="35.0" layoutY="210.0" text="Periodo:" />
-				<TextField fx:id="txtNomeMateria" layoutX="35.0" layoutY="36.0" prefHeight="26.0"
-					prefWidth="657.0" />
-				<RadioButton layoutX="39.0" layoutY="233.0"
-					mnemonicParsing="false" text="Manhã" />
-				<RadioButton layoutX="39.0" layoutY="263.0"
-					mnemonicParsing="false" text="Tarde" />
-				<RadioButton layoutX="39.0" layoutY="294.0"
-					mnemonicParsing="false" text="Noite" />
-				<ComboBox fx:id="CboListPro" layoutX="32.0" layoutY="155.0" prefHeight="26.0"
-					prefWidth="349.0" promptText="Selecione um Professor" />
-				<ComboBox fx:id="CboListCur" layoutX="32.0" layoutY="93.0" prefHeight="26.0"
-					prefWidth="349.0" promptText="Selecione um curso" />
-				<Button fx:id="BtnCadastrarMat" onAction="#BtnCadastrarMateria" layoutX="633.0" layoutY="380.0"
-					mnemonicParsing="false" text="Concluir" />
+				<Label layoutX="27.0" layoutY="33.0" text="NOME DA MATERIA">
+					<font>
+						<Font size="11.0" />
+					</font>
+				</Label>
+				<Label layoutX="29.0" layoutY="95.0"
+					text="PERTENCENTE AO CURSO:">
+					<font>
+						<Font size="11.0" />
+					</font>
+				</Label>
+				<Label layoutX="406.0" layoutY="94.0" text="PROFISSIONAL:">
+					<font>
+						<Font size="11.0" />
+					</font>
+				</Label>
+				<TextField fx:id="txtNameMatter" layoutX="28.0"
+					layoutY="50.0" prefHeight="26.0" prefWidth="657.0" />
+				<ComboBox fx:id="CboListPro" layoutX="404.0"
+					layoutY="112.0" prefHeight="26.0" prefWidth="382.0"
+					promptText="Selecione um Professor" />
+				<ComboBox fx:id="CboListCur" layoutX="29.0" layoutY="111.0"
+					prefHeight="26.0" prefWidth="349.0" promptText="Selecione um curso" />
+				<Button fx:id="BtnCadastrarMat" layoutX="705.0"
+					layoutY="32.0" mnemonicParsing="false"
+					onAction="#BtnCadastrarMateria" prefHeight="34.0" prefWidth="50.0"
+					style="-fx-background-color: transparent;" />
+				<ImageView fitHeight="34.0" fitWidth="44.0"
+					layoutX="710.0" layoutY="45.0" pickOnBounds="true"
+					preserveRatio="true">
+					<image>
+						<Image url="@images/System/add.png" />
+					</image>
+				</ImageView>
 			</children>
 		</Pane>
 		<Pane fx:id="pane_cad_int_curso" prefHeight="470.0"
 			prefWidth="1200.0" styleClass="testea" visible="false"
 			GridPane.columnIndex="2">
 			<children>
-				<Label layoutX="75.0" layoutY="34.0" text="Nome do Curso" />
-				<TextField fx:id="txtCurse_name" layoutX="75.0" layoutY="50.0"
-					prefHeight="26.0" prefWidth="589.0" />
-				<Button fx:id="BtnCadastrarCur" onAction="#BtnCadastrarCurso" layoutX="633.0" layoutY="380.0"
-					mnemonicParsing="false" text="Concluir" />
+				<Label layoutX="27.0" layoutY="34.0" text="NOME DO CURSO">
+					<font>
+						<Font size="11.0" />
+					</font>
+				</Label>
+				<TextField fx:id="txtCurse_name" layoutX="27.0"
+					layoutY="50.0" prefHeight="26.0" prefWidth="657.0" />
+				<Button fx:id="BtnCadastrarCur" layoutX="718.0"
+					layoutY="46.0" mnemonicParsing="false"
+					onAction="#BtnCadastrarCurso" prefHeight="34.0" prefWidth="34.0"
+					style="-fx-background-color: transparent;">
+					<graphic>
+						<ImageView fitHeight="34.0" fitWidth="41.0"
+							pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@images/System/add.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
+				<Label layoutX="588.0" layoutY="95.0" text="PERIODO">
+					<font>
+						<Font size="11.0" />
+					</font>
+				</Label>
+				<ComboBox fx:id="CboPeriodo" layoutX="588.0" layoutY="111.0" prefHeight="26.0"
+					prefWidth="216.0" promptText="Escolha o periodo"/>
+				<Label layoutX="304.0" layoutY="95.0"
+					text="CARGA HORARIA TOTAL">
+					<font>
+						<Font size="11.0" />
+					</font>
+				</Label>
+				<TextField fx:id="TxtQtdSemestres" layoutX="304.0" layoutY="111.0"
+					prefHeight="26.0" prefWidth="191.0" />
+				<Label layoutX="27.0" layoutY="95.0"
+					text="QUANTIDADE DE SEMESTRE">
+					<font>
+						<Font size="11.0" />
+					</font>
+				</Label>
+				<ComboBox fx:id="CboQtdSemestres" layoutX="28.0" layoutY="111.0" prefHeight="26.0"
+					prefWidth="182.0" promptText="Escolha a quantidade de Semestres"/>
+				<Label layoutX="28.0" layoutY="167.0"
+					text="LISTA DE CURSOS REGISTRADOS">
+					<font>
+						<Font size="11.0" />
+					</font>
+				</Label>
+				<TableView layoutX="28.0" layoutY="181.0"
+					prefHeight="200.0" prefWidth="776.0" />
 			</children>
 		</Pane>
 	</children>

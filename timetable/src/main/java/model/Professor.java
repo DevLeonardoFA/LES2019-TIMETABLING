@@ -10,10 +10,10 @@ public class Professor {
 	private long Id;
 	
 	@Column(name="nome")
-	private String Name;
+	private String name;
 	
 	@Column(name="email")
-	private String Email;
+	private String email;
 	
 	@Column(name="grau")
 	private int Degree;
@@ -27,19 +27,19 @@ public class Professor {
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		name = name;
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		email = email;
 	}
 
 	public int getDegree() {

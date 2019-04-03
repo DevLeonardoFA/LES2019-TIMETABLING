@@ -5,3 +5,7 @@
 .teste{
 	-fx-background-color: #c9c5cb;
 }
+
+button{
+	-fx-cursor: pointer;
+} 

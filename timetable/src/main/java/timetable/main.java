@@ -8,6 +8,7 @@ import java.net.URL;
 //import javax.persistence.Persistence;
 
 import DAO.DaoGeneric;
+import DAO.DaoList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +19,11 @@ import model.Curso;
 
 public class main extends Application {
 
+	@Override
+	public void init() throws Exception {
+		
+	}
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
@@ -36,7 +42,7 @@ public class main extends Application {
 		newstage.setScene(newScene);
 		newstage.setTitle(null);
 		newstage.show();
-
+		
 	}
 
 	public static void main(String[] args) {
