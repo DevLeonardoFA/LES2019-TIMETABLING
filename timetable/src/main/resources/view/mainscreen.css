@@ -1,11 +1,3 @@
-#pane_mainmenu{
-	-fx-background-color: #b2002f;
+Button{
+	-fx-cursor: hand;
 }
-
-.teste{
-	-fx-background-color: #c9c5cb;
-}
-
-button{
-	-fx-cursor: pointer;
-} 
