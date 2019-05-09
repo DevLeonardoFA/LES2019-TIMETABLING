@@ -16,6 +16,7 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Curso;
@@ -26,6 +27,8 @@ public class main extends Application {
 		Stage newstage = new Stage();
 		Parent rootb = null;
 
+		newstage.getIcons().add(new Image("view/images/System/timetable.icon.png"));
+		
 		try {
 			URL url = new File(getClass().getResource("/view/mainscreen.fxml").getPath()).toURI().toURL();
 			rootb = FXMLLoader.load(url);
@@ -38,6 +41,7 @@ public class main extends Application {
 		newstage.setScene(newScene);
 		newstage.setTitle(null);
 		newstage.show();
+		
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {

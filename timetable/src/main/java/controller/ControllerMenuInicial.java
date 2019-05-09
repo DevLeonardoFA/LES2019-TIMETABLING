@@ -52,6 +52,47 @@ public class ControllerMenuInicial {
 	@FXML
 	private Button btn_Leave;
 
+
+	@FXML ComboBox CboListCur;
+	@FXML ComboBox CboListPro;
+	@FXML ComboBox CboListPer;
+	@FXML ComboBox CboListSem;
+	@FXML TextField TxtWorkload;
+	@FXML TextField TxtInitials;
+	
+	
+	@FXML
+	private Button btn_reg_curso;
+	@FXML
+	private AnchorPane Pane_cad_int_curso;
+	@FXML
+	private Button btn_int_cur_concluir;
+	@FXML
+	private Button btn_reg_professor;
+	@FXML
+	private AnchorPane Pane_cad_int_professor;
+	@FXML
+	private Button btn_reg_materia;
+	@FXML
+	private AnchorPane Pane_cad_int_materia;
+	@FXML
+	private TextField txtCurso;
+
+
+	@FXML TextField txtEmailProfessor;
+	@FXML TextField txtNameProfessor;
+	@FXML TextField txtNameMatter;
+	@FXML TextField txtCurse_name;
+	@FXML TextField TxtQtdSemestres;
+	
+
+	@FXML AnchorPane Pane_gen_timetable;
+	@FXML Button BtnGenerateTT;
+	@FXML ComboBox CboPeriodGenerateTT;
+	@FXML ComboBox CboCurseGenerateTT;
+
+	
+	
 //-----------------------------------------------
 	public void BtnRegisterOpenScreen() {
 	
@@ -107,23 +148,6 @@ public class ControllerMenuInicial {
 
 //	SUB MENU cadastro 
 
-	@FXML
-	private Button btn_reg_curso;
-	@FXML
-	private AnchorPane Pane_cad_int_curso;
-	@FXML
-	private Button btn_int_cur_concluir;
-	@FXML
-	private Button btn_reg_professor;
-	@FXML
-	private AnchorPane Pane_cad_int_professor;
-	@FXML
-	private Button btn_reg_materia;
-	@FXML
-	private AnchorPane Pane_cad_int_materia;
-	@FXML
-	private TextField txtCurso;
-
 	@FXML ComboBox CboPeriodo;
 	@FXML ComboBox CboQtdSemestres;
 	@FXML TableView TableCurse;
@@ -164,14 +188,6 @@ public class ControllerMenuInicial {
 			Pane_cad_int_professor.setVisible(true);
 		}
 	}
-
-	
-	@FXML ComboBox CboListCur;
-	@FXML ComboBox CboListPro;
-	@FXML ComboBox CboListPer;
-	@FXML ComboBox CboListSem;
-	@FXML TextField TxtWorkload;
-	@FXML TextField TxtInitials;
 	
 	public void BtnOpenMatInt() {
 		Pane_cad_int_curso.setVisible(false);
@@ -202,12 +218,6 @@ public class ControllerMenuInicial {
 
 //------------------------------------------------------------
 
-	@FXML TextField txtEmailProfessor;
-	@FXML TextField txtNameProfessor;
-	@FXML TextField txtNameMatter;
-	@FXML TextField txtCurse_name;
-	@FXML TextField TxtQtdSemestres;
-	
 	public void BtnCadastrarCurso() {
 
 		DaoGeneric<Curso> objDaoG = new DaoGeneric<Curso>();
@@ -218,6 +228,10 @@ public class ControllerMenuInicial {
 		ObjCadCurso.setWorkload(TxtQtdSemestres.getText());
 		objDaoG.salvarAtualizar(ObjCadCurso);
 		
+		txtCurse_name.setText(null);
+		TxtQtdSemestres.setText(null);
+		CboPeriodo.setValue(null);
+		CboQtdSemestres.setValue(null);
 	}
 
 	public void BtnCadastrarProfessor() {
@@ -226,6 +240,8 @@ public class ControllerMenuInicial {
 		ObjCadPro.setName(txtNameProfessor.getText());
 		ObjCadPro.setEmail(txtEmailProfessor.getText());
 		objDaoG.salvarAtualizar(ObjCadPro);
+		
+		
 		
 	}
 
@@ -269,11 +285,6 @@ public class ControllerMenuInicial {
 	
 // 	SUB MENU HOUR
 	
-	@FXML AnchorPane Pane_gen_timetable;
-	@FXML Button BtnGenerateTT;
-	@FXML ComboBox CboPeriodGenerateTT;
-	@FXML ComboBox CboCurseGenerateTT;
-
 
 	public void BtnOpenGenTT() {
 		Pane_cad_int_materia.setVisible(false);
@@ -312,7 +323,6 @@ public class ControllerMenuInicial {
 		newstage.setTitle(null);
 		newstage.show();
 	}
-	
 	
 	public void BtnGenerateTT(){
 		String sCurse;

@@ -19,7 +19,7 @@ public class DaoList<E> {
 		return lst;
 	}
 	
-	public List ListAll(Class entidade,String where) {
+	public List ListAll(Class<?> entidade,String where) {
 		List lst = em.createQuery("Select name from " + entidade.getName() + " where curso = '" + where + "' ").getResultList();
 		
 		return lst;
