@@ -154,9 +154,9 @@ public class ControllerMenuInicial {
 	
 	public void BtnOpenCurInt() {
 		
-		CboQtdSemestres.getItems().setAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
-		CboPeriodo.getItems().setAll("Manh√£","Tarde","Noite");
-	
+		CboQtdSemestres.getItems().setAll("1", "2", "3", "4", "5", "6","7","8","9","10");
+		CboPeriodo.getItems().setAll("Manh„","Tarde","Noite");
+		
 		DaoGeneric<Curso> objdao = new DaoGeneric<Curso>();
 		java.util.List<Curso> listaC = objdao.listar(Curso.class);
 		ObservableList<Curso> listaCF = FXCollections.observableList(listaC);
@@ -206,7 +206,7 @@ public class ControllerMenuInicial {
 		
 		CboListSem.getItems().setAll("1", "2", "3", "4", "5", "6");
 		
-		CboListPer.getItems().setAll("Manh√£","Tarde","Noite");
+		CboListPer.getItems().setAll("Manh„","Tarde","Noite");
 		
 		if (Pane_cad_int_materia.isVisible()) {
 			Pane_cad_int_materia.setVisible(false);
