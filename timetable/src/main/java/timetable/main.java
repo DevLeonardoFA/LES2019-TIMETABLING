@@ -23,7 +23,7 @@ import model.Curso;
 
 public class main extends Application {
 
-	 public void telaprincipal() {
+	public void telaprincipal() {
 		Stage newstage = new Stage();
 		Parent rootb = null;
 
