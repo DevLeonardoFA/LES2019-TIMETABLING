@@ -22,7 +22,7 @@ public class Materia {
 	@Column(name="periodo")
 	private String period;
 	
-	@Column(name="carga horaria")
+	@Column(name="carga_horaria")
 	private String workload;
 	
 	@Column(name="sigla")
@@ -94,6 +94,8 @@ public class Materia {
 	public void setProfessional(String professional) {
 		this.professional = professional;
 	}
+
+	
 	
 	
 }

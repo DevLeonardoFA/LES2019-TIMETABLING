@@ -10,8 +10,8 @@ public class DaoTable<E> {
 
 	private EntityManager em = hibernateUtil.getEntityManager();
 
-	public List<E> SelectTableColumn(Class<E> entidade, String coluna){
-		List<E> lst = em.createQuery("Select" + coluna + "from " + entidade.getName()).getResultList();
+	public List<E> list(Class<E> entidade){
+		List<E> lst = em.createQuery("from " + entidade.getName()).getResultList();
 		
 		return lst;
 	}

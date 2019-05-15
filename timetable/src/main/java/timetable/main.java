@@ -49,6 +49,8 @@ public class main extends Application {
 		final Stage splashStage = new Stage();
 		Parent roota = null;
 
+		splashStage.getIcons().add(new Image("view/images/System/timetable.icon.png"));
+		
 		try {
 			URL url = new File(getClass().getResource("/view/splashscreen.fxml").getPath()).toURI().toURL();
 			roota = FXMLLoader.load(url);

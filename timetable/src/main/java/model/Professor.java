@@ -17,6 +17,9 @@ public class Professor {
 	
 	@Column(name="grau")
 	private int Degree;
+	
+	@Column(name="foto")
+	private long photo;
 
 	public long getId() {
 		return Id;
@@ -31,7 +34,7 @@ public class Professor {
 	}
 
 	public void setName(String name) {
-		name = name;
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -39,7 +42,7 @@ public class Professor {
 	}
 
 	public void setEmail(String email) {
-		email = email;
+		this.email = email;
 	}
 
 	public int getDegree() {
@@ -49,5 +52,15 @@ public class Professor {
 	public void setDegree(int degree) {
 		Degree = degree;
 	}
+
+	public long getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(long photo) {
+		this.photo = photo;
+	}
+
+
 
 }

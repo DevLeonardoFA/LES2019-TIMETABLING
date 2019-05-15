@@ -2,10 +2,14 @@ package controller;
 
 import java.io.File;
 import java.net.URL;
+import java.util.List;
 
 import DAO.DaoGeneric;
 import DAO.DaoList;
 import DAO.DaoTable;
+import Tabelas.TabelaCurso;
+import Tabelas.TabelaMateria;
+import Tabelas.TabelaProfessor;
 import javafx.beans.binding.When;
 import javafx.beans.value.ObservableListValue;
 import javafx.collections.FXCollections;
@@ -28,6 +32,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.TreeTableView;
 
 public class ControllerMenuInicial {
 	
@@ -35,61 +40,67 @@ public class ControllerMenuInicial {
 	Professor ObjCadPro = new Professor();
 	Materia ObjCadMat = new Materia();
 	
-	@FXML
-	private Button btn_Config;
-	@FXML
-	private Button btn_Register;
-	@FXML
-	private AnchorPane Pane_cad;
-	@FXML
-	private Button btn_Hour;
-	@FXML
-	private AnchorPane Pane_hour;
-	@FXML
-	private Button btn_Report;
-	@FXML
-	private AnchorPane Pane_report;
-	@FXML
-	private Button btn_Leave;
+	@FXML private Button btn_Config;
+	@FXML private Button btn_Register;
+	@FXML private AnchorPane Pane_cad;
+	@FXML private Button btn_Hour;
+	@FXML private AnchorPane Pane_hour;
+	@FXML private Button btn_Report;
+	@FXML private AnchorPane Pane_report;
+	@FXML private Button btn_Leave;
 
 
-	@FXML ComboBox CboListCur;
-	@FXML ComboBox CboListPro;
-	@FXML ComboBox CboListPer;
-	@FXML ComboBox CboListSem;
-	@FXML TextField TxtWorkload;
-	@FXML TextField TxtInitials;
+	@FXML private ComboBox CboListCur;
+	@FXML private ComboBox CboListPro;
+	@FXML private ComboBox CboListPer;
+	@FXML private ComboBox CboListSem;
+	@FXML private TextField TxtWorkload;
+	@FXML private TextField TxtInitials;
 	
 	
-	@FXML
-	private Button btn_reg_curso;
-	@FXML
-	private AnchorPane Pane_cad_int_curso;
-	@FXML
-	private Button btn_int_cur_concluir;
-	@FXML
-	private Button btn_reg_professor;
-	@FXML
-	private AnchorPane Pane_cad_int_professor;
-	@FXML
-	private Button btn_reg_materia;
-	@FXML
-	private AnchorPane Pane_cad_int_materia;
-	@FXML
-	private TextField txtCurso;
+	@FXML private Button btn_reg_curso;
+	@FXML private AnchorPane Pane_cad_int_curso;
+	@FXML private Button btn_int_cur_concluir;
+	@FXML private Button btn_reg_professor;
+	@FXML private AnchorPane Pane_cad_int_professor;
+	@FXML private Button btn_reg_materia;
+	@FXML private AnchorPane Pane_cad_int_materia;
+	@FXML private TextField txtCurso;
+
+	
+	@FXML private TableView<TabelaCurso> TableCurse;
+	
+	
+	@FXML private TableColumn<TabelaCurso, Long> TableCurseId;
+	@FXML private TableColumn<TabelaCurso, String> TableCurseName;
+	@FXML private TableColumn<TabelaCurso, String> TableCursePeriod;
+	@FXML private TableColumn<TabelaCurso, String> TableCurseSemester;
+	@FXML private TableColumn<TabelaCurso, String> TableCurseTime;
 
 
-	@FXML TextField txtEmailProfessor;
-	@FXML TextField txtNameProfessor;
-	@FXML TextField txtNameMatter;
-	@FXML TextField txtCurse_name;
-	@FXML TextField TxtQtdSemestres;
+	@FXML private TableView TableP;
+	@FXML private TableColumn TablePId;
+	@FXML private TableColumn TablePName;
+	@FXML private TableColumn TablePEmail;
+	
+	
+	@FXML private TableColumn TableMName;
+	@FXML private TableColumn TableMCurse;
+	@FXML private TableColumn TableMPeriod;
+	@FXML private TableView TableM;
+	
+	
+	@FXML private TextField txtEmailProfessor;
+	@FXML private TextField txtNameProfessor;
+	@FXML private TextField txtNameMatter;
+	@FXML private TextField txtCurse_name;
+	@FXML private TextField TxtQtdSemestres;
 	
 
-	@FXML AnchorPane Pane_gen_timetable;
-	@FXML Button BtnGenerateTT;
-	@FXML ComboBox CboPeriodGenerateTT;
-	@FXML ComboBox CboCurseGenerateTT;
+	@FXML private AnchorPane Pane_gen_timetable;
+	@FXML private Button BtnGenerateTT;
+	@FXML private ComboBox CboPeriodGenerateTT;
+	@FXML private ComboBox CboCurseGenerateTT;
 
 	
 	
@@ -148,9 +159,96 @@ public class ControllerMenuInicial {
 
 //	SUB MENU cadastro 
 
-	@FXML ComboBox CboPeriodo;
-	@FXML ComboBox CboQtdSemestres;
-	@FXML TableView TableCurse;
+	@FXML private ComboBox CboPeriodo;
+	@FXML private ComboBox CboQtdSemestres;
+	
+	private DaoTable<Curso> daoTableC = new DaoTable<Curso>();
+	private List<Curso> cursolist = daoTableC.list(Curso.class);
+	private ObservableList<TabelaCurso> ListTelaCurso = FXCollections.observableArrayList();
+
+	
+	public void TableUpdateCurso() {
+		
+		if(!ListTelaCurso.isEmpty()) {
+			ListTelaCurso.clear();
+		}
+		
+		for(Curso curso : cursolist) {
+			
+			TabelaCurso objTabelaCurso = new TabelaCurso(curso.getId(), curso.getName(), 
+					curso.getPeriod(), curso.getQtdhalf(), curso.getWorkload());
+			
+			ListTelaCurso.add(objTabelaCurso);
+			
+		}
+		
+		TableCurseId.setCellValueFactory(new PropertyValueFactory<TabelaCurso, Long>("id"));
+		TableCurseName.setCellValueFactory(new PropertyValueFactory<TabelaCurso, String>("nome"));
+		TableCursePeriod.setCellValueFactory(new PropertyValueFactory<TabelaCurso, String>("periodo"));
+		TableCurseSemester.setCellValueFactory(new PropertyValueFactory<TabelaCurso, String>("semestre"));
+		TableCurseTime.setCellValueFactory(new PropertyValueFactory<TabelaCurso, String>("tempo"));
+		
+		TableCurse.setItems(ListTelaCurso);
+		
+	}
+
+	
+	private DaoTable<Professor> daoTableP = new DaoTable<Professor>();
+	private List<Professor> professorlist = daoTableP.list(Professor.class);
+	private ObservableList<TabelaProfessor> ListTelaProfessor = FXCollections.observableArrayList();
+	
+	
+	public void TableUpdateProfessor() {
+		
+		if(!ListTelaProfessor.isEmpty()) {
+			ListTelaProfessor.clear();
+		}
+		
+		for(Professor professor : professorlist) {
+			
+			TabelaProfessor objTabelaProfessor = new TabelaProfessor(professor.getId(), professor.getName(), 
+					professor.getEmail());
+			
+			ListTelaProfessor.add(objTabelaProfessor);
+			
+		}
+		
+		TablePId.setCellValueFactory(new PropertyValueFactory<TabelaProfessor, Long>("id"));
+		TablePName.setCellValueFactory(new PropertyValueFactory<TabelaProfessor, String>("nome"));
+		TablePEmail.setCellValueFactory(new PropertyValueFactory<TabelaProfessor, String>("email"));
+		
+		TableP.setItems(ListTelaProfessor);
+	}
+
+	
+	
+	private DaoTable<Materia> daoTableM = new DaoTable<Materia>();
+	private List<Materia> materialist = daoTableM.list(Materia.class);
+	private ObservableList<TabelaMateria> ListTelaMateria = FXCollections.observableArrayList();
+	 
+	public void TableUpdateMateria() {
+		
+		if(!ListTelaMateria.isEmpty()) {
+			ListTelaMateria.clear();
+		}
+		
+		for(Materia materia : materialist) {
+			
+			TabelaMateria objTabelaMateria = new TabelaMateria(materia.getName(), materia.getMatter(), materia.getPeriod());
+			
+			ListTelaMateria.add(objTabelaMateria);
+			
+		}
+		
+		TableMName.setCellValueFactory(new PropertyValueFactory<TabelaMateria, String>("nome"));
+		TableMCurse.setCellValueFactory(new PropertyValueFactory<TabelaMateria, String>("curso"));
+		TableMPeriod.setCellValueFactory(new PropertyValueFactory<TabelaMateria, String>("periodo"));
+		
+		TableM.setItems(ListTelaMateria);
+		
+		
+	}
+
 	
 	public void BtnOpenCurInt() {
 		
@@ -161,9 +259,7 @@ public class ControllerMenuInicial {
 		java.util.List<Curso> listaC = objdao.listar(Curso.class);
 		ObservableList<Curso> listaCF = FXCollections.observableList(listaC);
 		
-		TableCurse.getColumns().addAll(listaCF);
-		
-		TableUpdate();
+		TableUpdateCurso();
 		
 		Pane_cad_int_materia.setVisible(false);
 		Pane_cad_int_professor.setVisible(false);
@@ -181,6 +277,8 @@ public class ControllerMenuInicial {
 		Pane_cad_int_curso.setVisible(false);
 		Pane_cad_int_materia.setVisible(false);
 		Pane_gen_timetable.setVisible(false);
+		
+		TableUpdateProfessor();
 		
 		if (Pane_cad_int_professor.isVisible()) {
 			Pane_cad_int_professor.setVisible(false);
@@ -207,6 +305,8 @@ public class ControllerMenuInicial {
 		CboListSem.getItems().setAll("1", "2", "3", "4", "5", "6");
 		
 		CboListPer.getItems().setAll("Manhã","Tarde","Noite");
+		
+		TableUpdateMateria();
 		
 		if (Pane_cad_int_materia.isVisible()) {
 			Pane_cad_int_materia.setVisible(false);
@@ -237,11 +337,13 @@ public class ControllerMenuInicial {
 	public void BtnCadastrarProfessor() {
 
 		DaoGeneric<Professor> objDaoG = new DaoGeneric<Professor>();
+		
 		ObjCadPro.setName(txtNameProfessor.getText());
 		ObjCadPro.setEmail(txtEmailProfessor.getText());
 		objDaoG.salvarAtualizar(ObjCadPro);
 		
-		
+		txtNameProfessor.setText(null);
+		txtEmailProfessor.setText(null);
 		
 	}
 
@@ -262,22 +364,6 @@ public class ControllerMenuInicial {
 	private Object mainScreen() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-
-	@FXML private TableColumn<Curso, Long> TableCurseId;
-	/*
-	@FXML TableColumn TableCurseName;
-	@FXML TableColumn TableCursePeriod;
-	@FXML TableColumn TableCurseSemester;
-	@FXML TableColumn TableCurseTime;
-	*/
-	private void TableUpdate() {
-		/*	
-		DaoGeneric<Curso> SelectForTable = new DaoGeneric<Curso>();
-		
-		ObservableList<Curso> ObsSelectAll = FXCollections.observableList(SelectForTable.listar(Curso.class));
-		 */
 	}
 
 	
