@@ -6,7 +6,7 @@
 		<class>model.Materia</class>
 		<class>model.Professor</class>     
 	     <properties>
-	     	 <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/TimeTab" />
+	     	 <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/TimeTab?serverTimezone=UTC" />
 		     <property name="hibernate.connection.username" value="root" />
 		     
 		     <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />

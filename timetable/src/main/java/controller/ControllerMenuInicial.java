@@ -332,6 +332,7 @@ public class ControllerMenuInicial {
 		TxtQtdSemestres.setText(null);
 		CboPeriodo.setValue(null);
 		CboQtdSemestres.setValue(null);
+		
 	}
 
 	public void BtnCadastrarProfessor() {
@@ -344,6 +345,7 @@ public class ControllerMenuInicial {
 		
 		txtNameProfessor.setText(null);
 		txtEmailProfessor.setText(null);
+		
 		
 	}
 
@@ -359,6 +361,14 @@ public class ControllerMenuInicial {
 		ObjCadMat.setProfessional(CboListPro.getValue().toString());
 		
 		objDaoG.salvarAtualizar(ObjCadMat);
+		
+		txtNameMatter.setText(null);
+		TxtWorkload.setText(null);
+		TxtInitials.setText(null);
+		CboListCur.setValue(null);
+		CboListSem.setValue(null);
+		CboListPer.setValue(null);
+		CboListPro.setValue(null);
 	}
 	
 	private Object mainScreen() {
