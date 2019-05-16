@@ -76,14 +76,17 @@ public class ControllerMenuInicial {
 	@FXML private TableColumn<TabelaCurso, String> TableCursePeriod;
 	@FXML private TableColumn<TabelaCurso, String> TableCurseSemester;
 	@FXML private TableColumn<TabelaCurso, String> TableCurseTime;
-
+	
+	@FXML private ComboBox CboPeriodo;
+	@FXML private ComboBox CboQtdSemestres;
+	@FXML private TextField TxtWorkloadCurso;
 
 	@FXML private TableView TableP;
 	@FXML private TableColumn TablePId;
 	@FXML private TableColumn TablePName;
 	@FXML private TableColumn TablePEmail;
 	
-	
+	@FXML private TableColumn TableMId;
 	@FXML private TableColumn TableMName;
 	@FXML private TableColumn TableMCurse;
 	@FXML private TableColumn TableMPeriod;
@@ -159,14 +162,15 @@ public class ControllerMenuInicial {
 
 //	SUB MENU cadastro 
 
-	@FXML private ComboBox CboPeriodo;
-	@FXML private ComboBox CboQtdSemestres;
+	
+	DaoGeneric daoG = new DaoGeneric();
+	
+	
 	
 	private DaoTable<Curso> daoTableC = new DaoTable<Curso>();
 	private List<Curso> cursolist = daoTableC.list(Curso.class);
 	private ObservableList<TabelaCurso> ListTelaCurso = FXCollections.observableArrayList();
 
-	
 	public void TableUpdateCurso() {
 		
 		if(!ListTelaCurso.isEmpty()) {
@@ -192,7 +196,6 @@ public class ControllerMenuInicial {
 		
 	}
 
-	
 	private DaoTable<Professor> daoTableP = new DaoTable<Professor>();
 	private List<Professor> professorlist = daoTableP.list(Professor.class);
 	private ObservableList<TabelaProfessor> ListTelaProfessor = FXCollections.observableArrayList();
@@ -220,8 +223,6 @@ public class ControllerMenuInicial {
 		TableP.setItems(ListTelaProfessor);
 	}
 
-	
-	
 	private DaoTable<Materia> daoTableM = new DaoTable<Materia>();
 	private List<Materia> materialist = daoTableM.list(Materia.class);
 	private ObservableList<TabelaMateria> ListTelaMateria = FXCollections.observableArrayList();
@@ -234,12 +235,13 @@ public class ControllerMenuInicial {
 		
 		for(Materia materia : materialist) {
 			
-			TabelaMateria objTabelaMateria = new TabelaMateria(materia.getName(), materia.getMatter(), materia.getPeriod());
+			TabelaMateria objTabelaMateria = new TabelaMateria(materia.getId(), materia.getName(), materia.getMatter(), materia.getPeriod());
 			
 			ListTelaMateria.add(objTabelaMateria);
 			
 		}
 		
+		TableMId.setCellValueFactory(new PropertyValueFactory<TabelaMateria, Long>("id"));
 		TableMName.setCellValueFactory(new PropertyValueFactory<TabelaMateria, String>("nome"));
 		TableMCurse.setCellValueFactory(new PropertyValueFactory<TabelaMateria, String>("curso"));
 		TableMPeriod.setCellValueFactory(new PropertyValueFactory<TabelaMateria, String>("periodo"));
@@ -250,6 +252,92 @@ public class ControllerMenuInicial {
 	}
 
 	
+	//-------------------------------------------------------
+	//não está deletando :(
+	public void TableDeleteCurso() {	
+		TabelaCurso TCurso = TableCurse.getSelectionModel().getSelectedItem();
+		long id = TCurso.getId();
+		
+		ListTelaCurso.remove(TCurso);
+		
+		daoG.deletar(Curso.class);
+		cursolist = daoTableC.list(Curso.class);
+		TableUpdateCurso();
+	}
+	
+	public void TableDeleteProfessor() {	
+		Professor objPro = new Professor();
+		TabelaProfessor TProf = (TabelaProfessor) TableP.getSelectionModel().getSelectedItem();
+		Long id = TProf.getId();
+		
+		ListTelaProfessor.remove(TProf);
+		
+		daoG.deletar(Professor.class);
+		professorlist = daoTableP.list(Professor.class);
+		TableUpdateCurso();
+	}
+	
+	public void TableDeleteMateria() {	
+		TabelaMateria TMat = (TabelaMateria) TableM.getSelectionModel().getSelectedItem();
+		Long id = TMat.getid();
+		
+		ListTelaMateria.remove(TMat);
+		
+		daoG.deletar(Materia.class);
+		materialist = daoTableM.list(Materia.class);
+		TableUpdateCurso();
+	}
+	
+	//------------------------------------------------------
+	
+	public void TableFromFieldsCurso() {
+		TabelaCurso TabelaCurso = TableCurse.getSelectionModel().getSelectedItem();
+		
+		txtCurse_name.setText(TabelaCurso.getNome().toString());
+		TxtWorkloadCurso.setText(TabelaCurso.getTempo().toString());
+		CboQtdSemestres.setValue(TabelaCurso.getSemestre().toString());
+		CboPeriodo.setValue(TabelaCurso.getPeriodo().toString());	
+	}
+	
+	public void TableFromFieldsProfessor() {
+		
+		TabelaProfessor TabelaProfessor = (Tabelas.TabelaProfessor) TableP.getSelectionModel().getSelectedItem();
+		
+		txtNameProfessor.setText(TabelaProfessor.getNome().toString());
+		txtEmailProfessor.setText(TabelaProfessor.getEmail().toString());
+
+		
+	}
+	
+	public void TableFromFieldsMateria() {
+		TabelaMateria TabelaMateria = (Tabelas.TabelaMateria) TableM.getSelectionModel().getSelectedItem();
+		
+	// com base no id fazer uma busca no banco e trazer tudo da linha correspondente
+	}
+	
+	public void TableEditCurso() {
+		
+		ObjCadCurso.setName(txtCurse_name.getText());
+		ObjCadCurso.setPeriod(CboListPer.getValue().toString());
+		ObjCadCurso.setQtdhalf(CboListSem.getValue().toString());
+		ObjCadCurso.setWorkload(TxtWorkload.getText());
+		
+		cursolist = daoTableC.list(Curso.class);
+		TableUpdateCurso();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//--------------------------------------------------------
 	public void BtnOpenCurInt() {
 		
 		CboQtdSemestres.getItems().setAll("1", "2", "3", "4", "5", "6","7","8","9","10");
@@ -259,6 +347,7 @@ public class ControllerMenuInicial {
 		java.util.List<Curso> listaC = objdao.listar(Curso.class);
 		ObservableList<Curso> listaCF = FXCollections.observableList(listaC);
 		
+		cursolist = daoTableC.list(Curso.class);
 		TableUpdateCurso();
 		
 		Pane_cad_int_materia.setVisible(false);
@@ -333,6 +422,9 @@ public class ControllerMenuInicial {
 		CboPeriodo.setValue(null);
 		CboQtdSemestres.setValue(null);
 		
+		cursolist = daoTableC.list(Curso.class);
+		TableUpdateCurso();
+		
 	}
 
 	public void BtnCadastrarProfessor() {
@@ -346,6 +438,8 @@ public class ControllerMenuInicial {
 		txtNameProfessor.setText(null);
 		txtEmailProfessor.setText(null);
 		
+		professorlist = daoTableP.list(Professor.class);
+		TableUpdateProfessor();
 		
 	}
 
@@ -369,6 +463,9 @@ public class ControllerMenuInicial {
 		CboListSem.setValue(null);
 		CboListPer.setValue(null);
 		CboListPro.setValue(null);
+		
+		materialist = daoTableM.list(Materia.class);
+		TableUpdateMateria();
 	}
 	
 	private Object mainScreen() {

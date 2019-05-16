@@ -16,4 +16,9 @@ public class DaoTable<E> {
 		return lst;
 	}
 	
+	public List<E> listEsp(Class<E> entidade, Long id){		
+		List<E> lst = em.createQuery("from " + entidade.getName() + "Where id = " + id).getResultList();
+		return lst;
+	}
+	
 }

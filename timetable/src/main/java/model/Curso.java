@@ -1,6 +1,8 @@
 package model;
 
 import javax.persistence.*;
+
+import Tabelas.TabelaCurso;
 @Entity
 @Table(name="Curso")
 
@@ -22,6 +24,7 @@ public class Curso {
 	@Column(name="Periodo")
 	private String period;
 	
+
 	public Long getId() {
 		return id;
 	}

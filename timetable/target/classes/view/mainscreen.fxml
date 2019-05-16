@@ -7,8 +7,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -104,7 +102,7 @@
 		</AnchorPane>
 		<AnchorPane fx:id="Pane_cad_int_professor" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="2">
 			<children>
-				<TextField fx:id="txtNameProfessor" layoutX="28.0" layoutY="50.0" prefHeight="26.0" prefWidth="736.0" />
+				<TextField fx:id="txtNameProfessor" layoutX="28.0" layoutY="50.0" prefHeight="26.0" prefWidth="692.0" />
 				<Label layoutX="27.0" layoutY="33.0" text="NOME DO PROFESSOR">
 					<font>
 						<Font size="11.0" />
@@ -116,26 +114,44 @@
 					</font>
 				</Label>
 				<TextField fx:id="txtEmailProfessor" layoutX="29.0" layoutY="111.0" prefHeight="26.0" prefWidth="776.0" />
-            <Button fx:id="BtnCadastrarProfessor" layoutX="771.0" layoutY="50.0" mnemonicParsing="false" onAction="#BtnCadastrarProfessor" prefHeight="26.0" prefWidth="19.0" style="-fx-background-color: transparent;">
+            <Button fx:id="BtnCadastrarProfessor" layoutX="771.0" layoutY="48.0" mnemonicParsing="false" onAction="#BtnCadastrarProfessor" prefHeight="26.0" prefWidth="19.0" style="-fx-background-color: transparent;">
                <graphic>
-                  <ImageView fitHeight="18.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/System/add.png" />
                      </image>
                   </ImageView>
                </graphic></Button>      
-            <TableView fx:id="TableP" layoutX="29.0" layoutY="199.0" prefHeight="200.0" prefWidth="782.0">
+            <TableView fx:id="TableP" layoutX="29.0" layoutY="199.0" onMouseClicked="#TableFromFieldsProfessor" prefHeight="200.0" prefWidth="782.0">
             	<columnResizePolicy>
 					<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
 				</columnResizePolicy>
 				<columns>
-					<TableColumn fx:id="TablePId" minWidth="100.0" text="ID" />
-					<TableColumn fx:id="TablePName" minWidth="252.0" text="NOME DO PROFESSOR" />
+					<TableColumn fx:id="TablePId" maxWidth="100.0" minWidth="63.0" prefWidth="76.0" text="ID" />
+					<TableColumn fx:id="TablePName" minWidth="252.0" prefWidth="470.0" text="NOME DO PROFESSOR" />
 					<TableColumn fx:id="TablePEmail" minWidth="118.0" text="E-MAIL" />
 				</columns>
 			</TableView>
             <RadioButton layoutX="29.0" layoutY="157.0" mnemonicParsing="false" text="LISTA DE PROFESSORES" />
             <RadioButton layoutX="191.0" layoutY="157.0" mnemonicParsing="false" text="HORÁRIOS" />
+            <Button fx:id="BtnDeleteProfessor" layoutX="771.0" layoutY="14.0" mnemonicParsing="false" onAction="#TableDeleteProfessor" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/System/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="BtnEditProfessor" layoutX="725.0" layoutY="48.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/System/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
 			</children>
 		</AnchorPane>
 		<AnchorPane fx:id="Pane_cad_int_materia" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="2">
@@ -163,11 +179,11 @@
                </effect></ComboBox>
 				<Button fx:id="BtnCadastrarMat" layoutX="773.0" layoutY="49.0" mnemonicParsing="false" onAction="#BtnCadastrarMateria" prefHeight="26.0" prefWidth="19.0" style="-fx-background-color: transparent;">
                <graphic>
-      						<ImageView fitHeight="18.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-      							<image>
-      								<Image url="@images/System/add.png" />
-      							</image>
-      						</ImageView>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/System/add.png" />
+                     </image>
+                  </ImageView>
                </graphic>
 				</Button>
             <Label layoutX="360.0" layoutY="95.0" text="SEMESTRE:">
@@ -200,11 +216,30 @@
                		<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             	</columnResizePolicy>
             	<columns>
-                	<TableColumn fx:id="TableMName" minWidth="315.0" text="MATERIA" />
+                  <TableColumn fx:id="TableMId" prefWidth="50.0" text="ID" />
+                	<TableColumn fx:id="TableMName" minWidth="315.0" prefWidth="423.0" text="MATERIA" />
                   	<TableColumn fx:id="TableMCurse" minWidth="75.0" text="CURSO" />
                   	<TableColumn fx:id="TableMPeriod" minWidth="75.0" text="PERIODO" />
               	</columns>
             </TableView>
+            <Button fx:id="BtnDeleteMateria" layoutX="773.0" layoutY="9.0" mnemonicParsing="false" onAction="#TableDeleteMateria" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/System/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="BtnEditMateria" layoutX="734.0" layoutY="48.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/System/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             
 			</children>
 		</AnchorPane>
@@ -215,10 +250,10 @@
 						<Font size="11.0" />
 					</font>
 				</Label>
-				<TextField fx:id="txtCurse_name" layoutX="27.0" layoutY="50.0" prefHeight="26.0" prefWidth="657.0" />
-				<Button fx:id="BtnCadastrarCur" layoutX="718.0" layoutY="46.0" mnemonicParsing="false" onAction="#BtnCadastrarCurso" prefHeight="34.0" prefWidth="34.0" style="-fx-background-color: transparent;">
+				<TextField fx:id="txtCurse_name" layoutX="27.0" layoutY="50.0" prefHeight="26.0" prefWidth="704.0" />
+				<Button fx:id="BtnCadastrarCur" layoutX="765.0" layoutY="48.0" mnemonicParsing="false" onAction="#BtnCadastrarCurso" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent;">
 					<graphic>
-						<ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@images/System/add.png" />
 							</image>
@@ -236,19 +271,19 @@
 						<Font size="11.0" />
 					</font>
 				</Label>
-				<TextField fx:id="TxtQtdSemestres" layoutX="304.0" layoutY="111.0" prefHeight="26.0" prefWidth="191.0" />
 				<Label layoutX="27.0" layoutY="95.0" text="QUANTIDADE DE SEMESTRE">
 					<font>
 						<Font size="11.0" />
 					</font>
 				</Label>
+				<TextField fx:id="TxtWorkloadCurso" layoutX="304.0" layoutY="111.0" prefHeight="26.0" prefWidth="191.0" />
 				<ComboBox fx:id="CboQtdSemestres" layoutX="28.0" layoutY="111.0" prefHeight="26.0" prefWidth="182.0" />
 				<Label layoutX="28.0" layoutY="167.0" text="LISTA DE CURSOS REGISTRADOS">
 					<font>
 						<Font size="11.0" />
 					</font>
 				</Label>
-				<TableView fx:id="TableCurse" layoutX="28.0" layoutY="181.0" prefHeight="200.0" prefWidth="776.0">
+				<TableView fx:id="TableCurse" layoutX="28.0" layoutY="181.0" onMouseClicked="#TableFromFieldsCurso" prefHeight="200.0" prefWidth="776.0">
 					<columnResizePolicy>
 						<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
 					</columnResizePolicy>
@@ -260,6 +295,24 @@
 						<TableColumn fx:id="TableCurseTime" maxWidth="164.0" minWidth="164.0" text="CARGA HORARIA" />
 					</columns>
 				</TableView>
+            <Button fx:id="BtnEditCurso" layoutX="734.0" layoutY="48.0" mnemonicParsing="false" onAction="#TableEditCurso" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/System/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="BtnDeleteCurso" layoutX="765.0" layoutY="11.0" mnemonicParsing="false" onAction="#TableDeleteCurso" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/System/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
 			</children>
 		</AnchorPane>
     	<AnchorPane fx:id="Pane_gen_timetable" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="2">
