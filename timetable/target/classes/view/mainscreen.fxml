@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -28,76 +30,109 @@
 	<children>
 		<AnchorPane fx:id="Pane_mainmenu" prefHeight="420.0" prefWidth="172.0" style="-fx-background-color: D74444;">
 			<children>
-				<Button fx:id="btn_Register" graphicTextGap="25.0" layoutY="162.0" mnemonicParsing="false" onAction="#BtnRegisterOpenScreen" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: transparent;" text="CADASTRO" textFill="WHITE">
+				<Button fx:id="btn_Register" graphicTextGap="60.0" layoutY="162.0" mnemonicParsing="false" onAction="#BtnRegisterOpenScreen" prefHeight="48.0" prefWidth="177.0" style="-fx-background-color: transparent;" text="CADASTRO" textFill="WHITE">
 					<graphic>
-						<ImageView fitHeight="26.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@images/System/Main%20Menu/Cadastro.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
-				<Button fx:id="btn_Hour" graphicTextGap="30.0" layoutY="210.0" mnemonicParsing="false" onAction="#BtnHourOpenScreen" prefHeight="48.0" prefWidth="155.0" style="-fx-background-color: transparent;" text="HORÁRIO" textFill="WHITE">
+				<Button fx:id="btn_Hour" graphicTextGap="70.0" layoutY="210.0" mnemonicParsing="false" onAction="#BtnHourOpenScreen" prefHeight="48.0" prefWidth="177.0" style="-fx-background-color: transparent;" text="HORÁRIO" textFill="WHITE">
 					<graphic>
-						<ImageView fitHeight="32.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@images/System/Main%20Menu/Horario.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
-				<Button fx:id="btn_Report" graphicTextGap="25.0" layoutY="258.0" mnemonicParsing="false" onAction="#BtnReportOpenScreen" prefHeight="48.0" prefWidth="172.0" style="-fx-background-color: transparent;" text="RELATÓRIOS" textFill="WHITE">
+				<Button fx:id="btn_Report" graphicTextGap="50.0" layoutY="258.0" mnemonicParsing="false" onAction="#BtnReportOpenScreen" prefHeight="48.0" prefWidth="177.0" style="-fx-background-color: transparent;" text="RELATÓRIOS" textFill="WHITE">
 					<graphic>
-						<ImageView fitHeight="28.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@images/System/Main%20Menu/Relatorio.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
+            <ImageView fitHeight="121.0" fitWidth="138.0" layoutX="28.0" layoutY="14.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/System/timetable.icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust saturation="-0.39" />
+               </effect>
+            </ImageView>
 			</children>
 		</AnchorPane>
 		<AnchorPane fx:id="Pane_cad" prefHeight="420.0" prefWidth="164.0" style="-fx-background-color: C4C4C4;" styleClass="teste" visible="false" GridPane.columnIndex="1">
 			<children>
-				<Button fx:id="btn_reg_curso" graphicTextGap="25.0" layoutX="3.0" layoutY="168.0" mnemonicParsing="false" onAction="#BtnOpenCurInt" prefHeight="39.0" prefWidth="148.0" style="-fx-background-color: transparent;" text="CURSOS">
-					<graphic>
-						<ImageView fitHeight="26.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-							<image>
-								<Image url="@images/System/Register%20menu/curso.png" />
-							</image>
-						</ImageView>
-					</graphic>
+				<Button fx:id="btn_reg_curso" graphicTextGap="75.0" layoutX="-6.0" layoutY="168.0" mnemonicParsing="false" onAction="#BtnOpenCurInt" prefHeight="39.0" prefWidth="191.0" style="-fx-background-color: transparent;" text="CURSOS">
+               <graphic>
+      						<ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+      							<image>
+      								<Image url="@images/System/Register%20menu/curso.png" />
+      							</image>
+      						</ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
 				</Button>
-				<Button fx:id="btn_reg_professor" graphicTextGap="25.0" layoutX="12.0" layoutY="216.0" mnemonicParsing="false" onAction="#BtnOpenProInt" prefHeight="39.0" prefWidth="172.0" style="-fx-background-color: transparent;" text="PROFESSORES">
-					<graphic>
-						<ImageView fitHeight="26.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-							<image>
-								<Image url="@images/System/Register%20menu/prof.png" />
-							</image>
-						</ImageView>
-					</graphic>
+				<Button fx:id="btn_reg_professor" graphicTextGap="40.0" layoutX="-7.0" layoutY="216.0" mnemonicParsing="false" onAction="#BtnOpenProInt" prefHeight="39.0" prefWidth="191.0" style="-fx-background-color: transparent;" text="PROFESSORES">
+               <graphic>
+      						<ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+      							<image>
+      								<Image url="@images/System/Register%20menu/prof.png" />
+      							</image>
+      						</ImageView>
+               </graphic>
 				</Button>
-				<Button fx:id="btn_reg_materia" graphicTextGap="25.0" layoutX="10.0" layoutY="263.0" mnemonicParsing="false" onAction="#BtnOpenMatInt" prefHeight="39.0" prefWidth="148.0" style="-fx-background-color: transparent;" text="MATERIAS">
-					<graphic>
-						<ImageView fitHeight="26.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-							<image>
-								<Image url="@images/System/Register%20menu/materias.png" />
-							</image>
-						</ImageView>
-					</graphic>
+				<Button fx:id="btn_reg_materia" graphicTextGap="65.0" layoutX="-4.0" layoutY="263.0" mnemonicParsing="false" onAction="#BtnOpenMatInt" prefHeight="39.0" prefWidth="191.0" style="-fx-background-color: transparent;" text="MATERIAS">
+               <graphic>
+      						<ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+      							<image>
+      								<Image url="@images/System/Register%20menu/materias.png" />
+      							</image>
+      						</ImageView>
+               </graphic>
 				</Button>
+            <ImageView fitHeight="71.0" fitWidth="76.0" layoutX="56.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/System/Main%20Menu/Cadastro.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" contrast="0.9" hue="0.05" saturation="1.0" />
+               </effect>
+            </ImageView>
 			</children>
 		</AnchorPane>
 		<AnchorPane fx:id="Pane_hour" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: C4C4C4;" visible="false" GridPane.columnIndex="1">
 			<children>
-				<Button fx:id="BtbGenerateTT" graphicTextGap="25.0" layoutX="1.0" layoutY="167.0" mnemonicParsing="false" onAction="#BtnOpenGenTT" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: transparent;" text="GERAR GRADE">
+				<Button fx:id="BtbGenerateTT" graphicTextGap="60.0" layoutX="1.0" layoutY="167.0" mnemonicParsing="false" onAction="#BtnOpenGenTT" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: transparent;" text="GERAR GRADE">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/System/Hour%20menu/grade.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust contrast="-0.07" hue="-1.0" saturation="-1.0" />
+                     </effect></ImageView>
+               </graphic></Button>
+				<Button graphicTextGap="60.0" layoutX="-4.0" layoutY="213.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="191.0" style="-fx-background-color: transparent;" text="LER ARQUIVO">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
-				<Button graphicTextGap="25.0" layoutX="-4.0" layoutY="213.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="191.0" style="-fx-background-color: transparent;" text="LER ARQUIVO">
-               <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic></Button>
+            <ImageView fitHeight="71.0" fitWidth="76.0" layoutX="56.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/System/Main%20Menu/Horario.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
+            </ImageView>
 			</children>
 		</AnchorPane>
 		<AnchorPane fx:id="Pane_cad_int_professor" onMouseClicked="#BacktoNormalP" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="2">
@@ -157,7 +192,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TableView fx:id="TablePH" editable="true" accessibleRole="CHECK_BOX" layoutX="29.0" layoutY="199.0" prefHeight="200.0" prefWidth="782.0">
+            <TableView fx:id="TablePH" accessibleRole="CHECK_BOX" editable="true" layoutX="29.0" layoutY="199.0" prefHeight="200.0" prefWidth="782.0">
               <columns>
                 	<TableColumn fx:id="colHor" prefWidth="75.0" />
                 	<TableColumn fx:id="colDom" prefWidth="75.0" text="DOMINGO" />
