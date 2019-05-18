@@ -439,14 +439,14 @@ public class ControllerMenuInicial {
 	
 	private ObservableList<TabelaProfessorHora> listadeHoras(){
 		return FXCollections.observableArrayList(
-				new TabelaProfessorHora("07:40"),
-				new TabelaProfessorHora("09:30"),
-				new TabelaProfessorHora("11:20"),
-				new TabelaProfessorHora("13:10"),
-				new TabelaProfessorHora("15:00"),
-				new TabelaProfessorHora("16:50"),
-				new TabelaProfessorHora("19:00"),
-				new TabelaProfessorHora("21:40")
+				new TabelaProfessorHora("07:40 ~ 09:20"),
+				new TabelaProfessorHora("09:30 ~ 11:10"),
+				new TabelaProfessorHora("11:20 ~ 13:00"),
+				new TabelaProfessorHora("13:10 ~ 14:50"),
+				new TabelaProfessorHora("15:00 ~ 16:40"),
+				new TabelaProfessorHora("16:50 ~ 18:30"),
+				new TabelaProfessorHora("19:00 ~ 20:40"),
+				new TabelaProfessorHora("20:50 ~ 22:30")
 				);
 	} 
 	
