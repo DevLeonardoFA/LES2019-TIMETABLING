@@ -127,7 +127,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>      
-            <TableView fx:id="TableP" layoutX="29.0" layoutY="199.0" onMouseClicked="#TableFromFieldsProfessor" prefHeight="200.0" prefWidth="782.0">
+            <TableView fx:id="TableP" layoutX="29.0" layoutY="199.0" onMouseClicked="#TableFromFieldsProfessor" prefHeight="200.0" prefWidth="782.0" visible="false">
             	<columnResizePolicy>
 					<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
 				</columnResizePolicy>
@@ -157,15 +157,16 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TableView fx:id="TablePH" accessibleRole="CHECK_BOX" fixedCellSize="3.0" layoutX="29.0" layoutY="199.0" prefHeight="200.0" prefWidth="782.0" visible="false">
+            <TableView fx:id="TablePH" editable="true" accessibleRole="CHECK_BOX" layoutX="29.0" layoutY="199.0" prefHeight="200.0" prefWidth="782.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="DOMINGO" />
-                <TableColumn prefWidth="75.0" text="SEGUNDA" />
-                  <TableColumn prefWidth="75.0" text="TERÇA" />
-                  <TableColumn prefWidth="75.0" text="QUARTA" />
-                  <TableColumn prefWidth="75.0" text="QUINTA" />
-                  <TableColumn prefWidth="75.0" text="SEXTA" />
-                  <TableColumn prefWidth="75.0" text="SABADO" />
+                	<TableColumn fx:id="colHor" prefWidth="75.0" />
+                	<TableColumn fx:id="colDom" prefWidth="75.0" text="DOMINGO" />
+                	<TableColumn fx:id="colSeg" prefWidth="75.0" text="SEGUNDA" />
+                	<TableColumn fx:id="colTer" prefWidth="75.0" text="TERÇA" />
+                	<TableColumn fx:id="colQua" prefWidth="75.0" text="QUARTA" />
+                	<TableColumn fx:id="colQui" prefWidth="75.0" text="QUINTA" />
+                 	<TableColumn fx:id="colSex" prefWidth="75.0" text="SEXTA" />
+                 	<TableColumn fx:id="colSab" prefWidth="75.0" text="SABADO" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

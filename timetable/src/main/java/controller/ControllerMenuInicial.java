@@ -10,6 +10,7 @@ import DAO.DaoTable;
 import Tabelas.TabelaCurso;
 import Tabelas.TabelaMateria;
 import Tabelas.TabelaProfessor;
+import Tabelas.TabelaProfessorHora;
 import javafx.beans.binding.When;
 import javafx.beans.value.ObservableListValue;
 import javafx.collections.FXCollections;
@@ -28,6 +29,7 @@ import model.Materia;
 import model.Professor;
 import net.bytebuddy.asm.Advice.Exit;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.control.ComboBox;
@@ -85,7 +87,7 @@ public class ControllerMenuInicial {
 	@FXML private TextField TxtWorkloadCurso;
 
 	@FXML private TableView TableP;
-	@FXML private TableView TablePH;
+	@FXML private TableView<TabelaProfessorHora> TablePH;
 	@FXML private TableColumn TablePId;
 	@FXML private TableColumn TablePName;
 	@FXML private TableColumn TablePEmail;
@@ -127,6 +129,15 @@ public class ControllerMenuInicial {
 	
 	@FXML RadioButton radProfessoresLista;
 	@FXML RadioButton radProfessoresHora;
+	
+	@FXML TableColumn<TabelaProfessorHora, String> colHor;
+	@FXML TableColumn<TabelaProfessorHora, Boolean> colDom;
+	@FXML TableColumn<TabelaProfessorHora, Boolean> colSeg;
+	@FXML TableColumn<TabelaProfessorHora, Boolean> colTer;
+	@FXML TableColumn<TabelaProfessorHora, Boolean> colQua;
+	@FXML TableColumn<TabelaProfessorHora, Boolean> colQui;
+	@FXML TableColumn<TabelaProfessorHora, Boolean> colSex;
+	@FXML TableColumn<TabelaProfessorHora, Boolean> colSab;
 	
 //-----------------------------------------------
 	public void BtnRegisterOpenScreen() {
@@ -410,7 +421,6 @@ public class ControllerMenuInicial {
 	}
 	
 	
-	
 	public void TableEditCurso() {
 		
 		ObjCadCurso.setName(txtCurse_name.getText());
@@ -427,9 +437,40 @@ public class ControllerMenuInicial {
 	
 	
 	
+	private ObservableList<TabelaProfessorHora> listadeHoras(){
+		return FXCollections.observableArrayList(
+				new TabelaProfessorHora("07:40"),
+				new TabelaProfessorHora("09:30"),
+				new TabelaProfessorHora("11:20"),
+				new TabelaProfessorHora("13:10"),
+				new TabelaProfessorHora("15:00"),
+				new TabelaProfessorHora("16:50"),
+				new TabelaProfessorHora("19:00"),
+				new TabelaProfessorHora("21:40")
+				);
+	} 
 	
+	public void AtualizarTabelaHora() {
 	
-	
+		colHor.setCellValueFactory(new PropertyValueFactory<TabelaProfessorHora, String>("horaField"));
+		colDom.setCellValueFactory(new PropertyValueFactory<TabelaProfessorHora, Boolean>("horaDom"));
+		colSeg.setCellValueFactory(new PropertyValueFactory<TabelaProfessorHora, Boolean>("horaSeg"));
+		colTer.setCellValueFactory(new PropertyValueFactory<TabelaProfessorHora, Boolean>("horaTer"));
+		colQua.setCellValueFactory(new PropertyValueFactory<TabelaProfessorHora, Boolean>("horaQua"));
+		colQui.setCellValueFactory(new PropertyValueFactory<TabelaProfessorHora, Boolean>("horaQui"));
+		colSex.setCellValueFactory(new PropertyValueFactory<TabelaProfessorHora, Boolean>("horaSex"));
+		colSab.setCellValueFactory(new PropertyValueFactory<TabelaProfessorHora, Boolean>("horaSab"));
+		 
+		colDom.setCellFactory(CheckBoxTableCell.forTableColumn(colDom));
+		colSeg.setCellFactory(CheckBoxTableCell.forTableColumn(colSeg));
+		colTer.setCellFactory(CheckBoxTableCell.forTableColumn(colTer));
+		colQua.setCellFactory(CheckBoxTableCell.forTableColumn(colQua));
+		colQui.setCellFactory(CheckBoxTableCell.forTableColumn(colQui));
+		colSex.setCellFactory(CheckBoxTableCell.forTableColumn(colSex));
+		colSab.setCellFactory(CheckBoxTableCell.forTableColumn(colSab));
+		
+		TablePH.setItems(listadeHoras());
+	}
 	
 	public void showProfessor() {
 		radProfessoresHora.setSelected(false);
@@ -438,6 +479,8 @@ public class ControllerMenuInicial {
 	}
 	
 	public void showProfessorHour() {
+		AtualizarTabelaHora();
+		
 		radProfessoresLista.setSelected(false);
 		TablePH.setVisible(true);
 		TableP.setVisible(false);
