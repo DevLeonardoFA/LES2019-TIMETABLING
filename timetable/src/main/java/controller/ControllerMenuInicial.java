@@ -22,13 +22,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Curso;
 import model.Materia;
 import model.Professor;
 import net.bytebuddy.asm.Advice.Exit;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.layout.AnchorPane;
@@ -82,6 +85,7 @@ public class ControllerMenuInicial {
 	@FXML private TextField TxtWorkloadCurso;
 
 	@FXML private TableView TableP;
+	@FXML private TableView TablePH;
 	@FXML private TableColumn TablePId;
 	@FXML private TableColumn TablePName;
 	@FXML private TableColumn TablePEmail;
@@ -105,7 +109,24 @@ public class ControllerMenuInicial {
 	@FXML private ComboBox CboPeriodGenerateTT;
 	@FXML private ComboBox CboCurseGenerateTT;
 
+	@FXML private Button BtnCadastrarCur;
+	@FXML private Button BtnEditCurso;
+	@FXML private Button BtnDeleteCurso;
 	
+	@FXML private Button BtnCadastrarProfessor;
+	@FXML private Button BtnEditProfessor;
+	@FXML private Button BtnDeleteProfessor;
+	
+	@FXML private Button BtnCadastrarMat;
+	@FXML private Button BtnEditMateria;
+	@FXML private Button BtnDeleteMateria;
+	
+	@FXML private Button BtnBacktoNormalC;
+	@FXML private Button BtnBacktoNormalP;
+	@FXML private Button BtnBacktoNormalM;
+	
+	@FXML RadioButton radProfessoresLista;
+	@FXML RadioButton radProfessoresHora;
 	
 //-----------------------------------------------
 	public void BtnRegisterOpenScreen() {
@@ -248,19 +269,21 @@ public class ControllerMenuInicial {
 		
 		TableM.setItems(ListTelaMateria);
 		
-		
 	}
 
 	
 	//-------------------------------------------------------
-	//n„o est· deletando :(
 	public void TableDeleteCurso() {	
 		TabelaCurso TCurso = TableCurse.getSelectionModel().getSelectedItem();
 		long id = TCurso.getId();
 		
 		ListTelaCurso.remove(TCurso);
 		
-		daoG.deletar(Curso.class);
+		Curso c = new Curso();
+		c.setId(id);
+		
+		daoG.deletar(c); 
+		
 		cursolist = daoTableC.list(Curso.class);
 		TableUpdateCurso();
 	}
@@ -272,7 +295,11 @@ public class ControllerMenuInicial {
 		
 		ListTelaProfessor.remove(TProf);
 		
-		daoG.deletar(Professor.class);
+		Professor p = new Professor();
+		p.setId(id);
+		
+		
+		daoG.deletar(p);
 		professorlist = daoTableP.list(Professor.class);
 		TableUpdateCurso();
 	}
@@ -283,7 +310,10 @@ public class ControllerMenuInicial {
 		
 		ListTelaMateria.remove(TMat);
 		
-		daoG.deletar(Materia.class);
+		Materia m = new Materia();
+		m.setId(id);
+		
+		daoG.deletar(m);
 		materialist = daoTableM.list(Materia.class);
 		TableUpdateCurso();
 	}
@@ -292,35 +322,103 @@ public class ControllerMenuInicial {
 	
 	public void TableFromFieldsCurso() {
 		TabelaCurso TabelaCurso = TableCurse.getSelectionModel().getSelectedItem();
+		long id = TabelaCurso.getId();
 		
-		txtCurse_name.setText(TabelaCurso.getNome().toString());
-		TxtWorkloadCurso.setText(TabelaCurso.getTempo().toString());
-		CboQtdSemestres.setValue(TabelaCurso.getSemestre().toString());
-		CboPeriodo.setValue(TabelaCurso.getPeriodo().toString());	
+		DaoTable daoT = new DaoTable();
+		
+		Curso c = new Curso();
+		c.setId(id);
+		
+		ObservableList<Curso> list = FXCollections.observableArrayList(daoT.listEsp(c));
+		
+		txtCurse_name.setText(list.get(0).getName());
+		TxtWorkloadCurso.setText(list.get(0).getWorkload());
+		CboQtdSemestres.setValue(list.get(0).getQtdhalf().toString());
+		CboPeriodo.setValue(list.get(0).getPeriod().toString());
+
+		BtnCadastrarCur.setVisible(false);
+		BtnEditCurso.setVisible(true);
+		BtnDeleteCurso.setVisible(true);
+		BtnBacktoNormalC.setVisible(true);
 	}
 	
 	public void TableFromFieldsProfessor() {
-		
 		TabelaProfessor TabelaProfessor = (Tabelas.TabelaProfessor) TableP.getSelectionModel().getSelectedItem();
+		long id = TabelaProfessor.getId();
 		
-		txtNameProfessor.setText(TabelaProfessor.getNome().toString());
-		txtEmailProfessor.setText(TabelaProfessor.getEmail().toString());
+		DaoTable daoT = new DaoTable();
+		
+		Professor p = new Professor();
+		p.setId(id);
+		
+		ObservableList<Professor> list = FXCollections.observableArrayList(daoT.listEsp(p));
+		
+		txtNameProfessor.setText(list.get(0).getName());
+		txtEmailProfessor.setText(list.get(0).getEmail());
 
+		BtnCadastrarProfessor.setVisible(false);
+		BtnEditProfessor.setVisible(true);
+		BtnDeleteProfessor.setVisible(true);
+		BtnBacktoNormalP.setVisible(true);
 		
 	}
 	
 	public void TableFromFieldsMateria() {
 		TabelaMateria TabelaMateria = (Tabelas.TabelaMateria) TableM.getSelectionModel().getSelectedItem();
+		long id = TabelaMateria.getid();
 		
-	// com base no id fazer uma busca no banco e trazer tudo da linha correspondente
+		DaoTable daoT = new DaoTable();
+		
+		Materia m = new Materia();
+		m.setId(id);
+		
+		ObservableList<Materia> list = FXCollections.observableArrayList(daoT.listEsp(m));
+		
+		txtNameMatter.setText(list.get(0).getName());
+		CboListCur.setValue(list.get(0).getMatter().toString());
+		CboListSem.setValue(list.get(0).getSemester().toString());
+		CboListPer.setValue(list.get(0).getPeriod().toString());
+		TxtWorkload.setText(list.get(0).getWorkload());
+		TxtInitials.setText(list.get(0).getInitials());
+		CboListPro.setValue(list.get(0).getProfessional().toString());
+		
+		BtnCadastrarMat.setVisible(false);
+		BtnEditMateria.setVisible(true);
+		BtnDeleteMateria.setVisible(true);
+		BtnBacktoNormalM.setVisible(true);
 	}
+	
+	public void BacktoNormalC() {
+		BtnBacktoNormalC.setVisible(false);
+		BtnCadastrarCur.setVisible(true);
+		BtnEditCurso.setVisible(false);
+		BtnDeleteCurso.setVisible(false);
+	}
+	
+	public void BacktoNormalP() {
+		BtnBacktoNormalP.setVisible(false);
+		BtnCadastrarProfessor.setVisible(true);
+		BtnEditProfessor.setVisible(false);
+		BtnDeleteProfessor.setVisible(false);
+	}
+	
+	public void BacktoNormalM() {
+		BtnBacktoNormalM.setVisible(false);
+		BtnCadastrarMat.setVisible(true);
+		BtnEditMateria.setVisible(false);
+		BtnDeleteMateria.setVisible(false);
+	}
+	
+	
 	
 	public void TableEditCurso() {
 		
 		ObjCadCurso.setName(txtCurse_name.getText());
-		ObjCadCurso.setPeriod(CboListPer.getValue().toString());
-		ObjCadCurso.setQtdhalf(CboListSem.getValue().toString());
-		ObjCadCurso.setWorkload(TxtWorkload.getText());
+		ObjCadCurso.setQtdhalf(CboQtdSemestres.getValue().toString());
+		ObjCadCurso.setWorkload(TxtWorkloadCurso.getText());
+		ObjCadCurso.setPeriod(CboPeriodo.getValue().toString());
+		
+		daoG.salvarAtualizar(ObjCadCurso);
 		
 		cursolist = daoTableC.list(Curso.class);
 		TableUpdateCurso();
@@ -333,7 +431,17 @@ public class ControllerMenuInicial {
 	
 	
 	
+	public void showProfessor() {
+		radProfessoresHora.setSelected(false);
+		TableP.setVisible(true);
+		TablePH.setVisible(false);
+	}
 	
+	public void showProfessorHour() {
+		radProfessoresLista.setSelected(false);
+		TablePH.setVisible(true);
+		TableP.setVisible(false);
+	}
 	
 	
 	
@@ -414,11 +522,11 @@ public class ControllerMenuInicial {
 		ObjCadCurso.setName(txtCurse_name.getText());
 		ObjCadCurso.setPeriod(CboPeriodo.getValue().toString());
 		ObjCadCurso.setQtdhalf(CboQtdSemestres.getValue().toString());
-		ObjCadCurso.setWorkload(TxtQtdSemestres.getText());
+		ObjCadCurso.setWorkload(TxtWorkloadCurso.getText());
 		objDaoG.salvarAtualizar(ObjCadCurso);
 		
 		txtCurse_name.setText(null);
-		TxtQtdSemestres.setText(null);
+		TxtWorkloadCurso.setText(null);
 		CboPeriodo.setValue(null);
 		CboQtdSemestres.setValue(null);
 		
@@ -490,7 +598,7 @@ public class ControllerMenuInicial {
 		ObservableList<Curso> listaCF = FXCollections.observableList(listaC);
 		CboCurseGenerateTT.setItems(listaCF);
 		
-		CboPeriodGenerateTT.getItems().setAll("Manh√£","Tarde","Noite");
+		CboPeriodGenerateTT.getItems().setAll("Manh„","Tarde","Noite");
 		
 		if (Pane_gen_timetable.isVisible()) {
 			Pane_gen_timetable.setVisible(false);
@@ -503,7 +611,9 @@ public class ControllerMenuInicial {
 	public void openscreen() {
 		Stage newstage = new Stage();
 		Parent rootb = null;
-
+		
+		newstage.getIcons().add(new Image("view/images/System/timetable.icon.png"));
+		
 		try {
 			URL url = new File(getClass().getResource("/view/resultscreen.fxml").getPath()).toURI().toURL();
 			rootb = FXMLLoader.load(url);
@@ -514,6 +624,7 @@ public class ControllerMenuInicial {
 		Scene newScene = new Scene(rootb);
 		newstage.setScene(newScene);
 		newstage.setTitle(null);
+		newstage.initStyle(StageStyle.UNDECORATED);
 		newstage.show();
 	}
 	
