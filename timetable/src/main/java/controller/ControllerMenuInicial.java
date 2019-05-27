@@ -29,6 +29,7 @@ import model.Materia;
 import model.Professor;
 import net.bytebuddy.asm.Advice.Exit;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -45,16 +46,18 @@ public class ControllerMenuInicial {
 	Professor ObjCadPro = new Professor();
 	Materia ObjCadMat = new Materia();
 	
-	@FXML private Button btn_Config;
-	@FXML private Button btn_Register;
+	@FXML private ToggleButton btn_Config;
+	@FXML private ToggleButton btn_Register;
 	@FXML private AnchorPane Pane_cad;
-	@FXML private Button btn_Hour;
 	@FXML private AnchorPane Pane_hour;
-	@FXML private Button btn_Report;
 	@FXML private AnchorPane Pane_report;
-	@FXML private Button btn_Leave;
-
-
+	@FXML private ToggleButton btn_Hour;
+	@FXML private ToggleButton btn_Report;
+	
+	@FXML private ToggleButton btn_reg_curso;
+	@FXML private ToggleButton btn_reg_professor;
+	@FXML private ToggleButton btn_reg_materia;
+	
 	@FXML private ComboBox CboListCur;
 	@FXML private ComboBox CboListPro;
 	@FXML private ComboBox CboListPer;
@@ -63,12 +66,9 @@ public class ControllerMenuInicial {
 	@FXML private TextField TxtInitials;
 	
 	
-	@FXML private Button btn_reg_curso;
 	@FXML private AnchorPane Pane_cad_int_curso;
 	@FXML private Button btn_int_cur_concluir;
-	@FXML private Button btn_reg_professor;
 	@FXML private AnchorPane Pane_cad_int_professor;
-	@FXML private Button btn_reg_materia;
 	@FXML private AnchorPane Pane_cad_int_materia;
 	@FXML private TextField txtCurso;
 
@@ -142,6 +142,7 @@ public class ControllerMenuInicial {
 //-----------------------------------------------
 	public void BtnRegisterOpenScreen() {
 	
+		
 		Pane_cad_int_curso.setVisible(false);
 		Pane_cad_int_professor.setVisible(false);
 		Pane_cad_int_materia.setVisible(false);
@@ -149,8 +150,10 @@ public class ControllerMenuInicial {
 		Pane_hour.setVisible(false);
 		
 		if (Pane_cad.isVisible()) {
+			btn_Register.setStyle("-fx-background-color: transparent");
 			Pane_cad.setVisible(false);
 		} else {
+			btn_Register.setStyle("-fx-background-color:  D31530");
 			Pane_cad.setVisible(true);
 		}
 
@@ -185,10 +188,7 @@ public class ControllerMenuInicial {
 			Pane_report.setVisible(true);
 		}*/
 	}
-	
-	public void BtnLeave() {
-		System.exit(0);
-	}
+
 
 //----------------------------------------------------------------
 
