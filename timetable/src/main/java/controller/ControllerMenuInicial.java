@@ -20,6 +20,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.print.Collation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -140,8 +142,8 @@ public class ControllerMenuInicial {
 	@FXML TableColumn<TabelaProfessorHora, Boolean> colSab;
 	
 //-----------------------------------------------
-	public void BtnRegisterOpenScreen() {
 	
+	public void BtnRegisterOpenScreen() {
 		
 		Pane_cad_int_curso.setVisible(false);
 		Pane_cad_int_professor.setVisible(false);
@@ -150,10 +152,8 @@ public class ControllerMenuInicial {
 		Pane_hour.setVisible(false);
 		
 		if (Pane_cad.isVisible()) {
-			btn_Register.setStyle("-fx-background-color: transparent");
 			Pane_cad.setVisible(false);
 		} else {
-			btn_Register.setStyle("-fx-background-color:  D31530");
 			Pane_cad.setVisible(true);
 		}
 
@@ -595,28 +595,38 @@ public class ControllerMenuInicial {
 	}
 
 	public void BtnCadastrarMateria() {
-		DaoGeneric<Materia> objDaoG = new DaoGeneric<Materia>();
 		
-		ObjCadMat.setName(txtNameMatter.getText());
-		ObjCadMat.setMatter(CboListCur.getValue().toString());
-		ObjCadMat.setSemester(CboListSem.getValue().toString());
-		ObjCadMat.setPeriod(CboListPer.getValue().toString());
-		ObjCadMat.setWorkload(TxtWorkload.getText().toString());
-		ObjCadMat.setInitials(TxtInitials.getText());
-		ObjCadMat.setProfessional(CboListPro.getValue().toString());
 		
-		objDaoG.salvarAtualizar(ObjCadMat);
-		
-		txtNameMatter.setText(null);
-		TxtWorkload.setText(null);
-		TxtInitials.setText(null);
-		CboListCur.setValue(null);
-		CboListSem.setValue(null);
-		CboListPer.setValue(null);
-		CboListPro.setValue(null);
-		
-		materialist = daoTableM.list(Materia.class);
-		TableUpdateMateria();
+		if(CboListCur == null){
+			Alert errorAlert = new Alert(AlertType.ERROR);
+			errorAlert.setHeaderText("Campo Curso vazio");
+			errorAlert.setContentText("selecione um curso para a matéria");
+			errorAlert.showAndWait();
+		}
+		else {
+			DaoGeneric<Materia> objDaoG = new DaoGeneric<Materia>();
+			
+			ObjCadMat.setName(txtNameMatter.getText());
+			ObjCadMat.setMatter(CboListCur.getValue().toString());
+			ObjCadMat.setSemester(CboListSem.getValue().toString());
+			ObjCadMat.setPeriod(CboListPer.getValue().toString());
+			ObjCadMat.setWorkload(TxtWorkload.getText().toString());
+			ObjCadMat.setInitials(TxtInitials.getText());
+			ObjCadMat.setProfessional(CboListPro.getValue().toString());
+			
+			objDaoG.salvarAtualizar(ObjCadMat);
+			
+			txtNameMatter.setText(null);
+			TxtWorkload.setText(null);
+			TxtInitials.setText(null);
+			CboListCur.setValue(null);
+			CboListSem.setValue(null);
+			CboListPer.setValue(null);
+			CboListPro.setValue(null);
+			
+			materialist = daoTableM.list(Materia.class);
+			TableUpdateMateria();
+		}
 	}
 	
 	private Object mainScreen() {

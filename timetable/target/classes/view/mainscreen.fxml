@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenuInicial">
+<GridPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="1200.0" styleClass="toggle-button-1" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenuInicial">
 	<columnConstraints>
 		<ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="110.0" prefWidth="177.0" />
 		<ColumnConstraints hgrow="SOMETIMES" maxWidth="304.0" minWidth="0.0" prefWidth="187.0" />
@@ -31,7 +31,7 @@
 	<children>
 		<AnchorPane fx:id="Pane_mainmenu" prefHeight="420.0" prefWidth="172.0" style="-fx-background-color: D74444;">
 			<children>
-				<ToggleButton fx:id="btn_Register" accessibleRole="TOGGLE_BUTTON" graphicTextGap="60.0" layoutY="162.0" mnemonicParsing="false" onAction="#BtnRegisterOpenScreen" prefHeight="48.0" prefWidth="177.0" style="-fx-background-color: D460263;" text="CADASTRO" textFill="WHITE">
+				<ToggleButton fx:id="btn_Register" accessibleRole="TOGGLE_BUTTON" graphicTextGap="60.0" layoutY="162.0" mnemonicParsing="false" onAction="#BtnRegisterOpenScreen" prefHeight="48.0" prefWidth="177.0" text="CADASTRO" textFill="WHITE">
 					<graphic>
 						<ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
 							<image>
@@ -43,7 +43,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
 				</ToggleButton>
-				<ToggleButton fx:id="btn_Hour" graphicTextGap="70.0" layoutY="210.0" mnemonicParsing="false" onAction="#BtnHourOpenScreen" prefHeight="48.0" prefWidth="177.0" style="-fx-background-color: D74444;" text="HORÁRIO" textFill="WHITE">
+				<ToggleButton fx:id="btn_Hour" graphicTextGap="70.0" layoutY="210.0" mnemonicParsing="false" onAction="#BtnHourOpenScreen" prefHeight="48.0" prefWidth="177.0" text="HORÁRIO" textFill="WHITE">
 					<graphic>
 						<ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
 							<image>
@@ -55,7 +55,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
 				</ToggleButton>
-				<ToggleButton fx:id="btn_Report" graphicTextGap="50.0" layoutY="258.0" mnemonicParsing="false" onAction="#BtnReportOpenScreen" prefHeight="48.0" prefWidth="177.0" style="-fx-background-color: D74444;" text="RELATÓRIOS" textFill="WHITE">
+				<ToggleButton fx:id="btn_Report" graphicTextGap="50.0" layoutY="258.0" mnemonicParsing="false" onAction="#BtnReportOpenScreen" prefHeight="48.0" prefWidth="177.0" text="RELATÓRIOS" textFill="WHITE" visible="false">
 					<graphic>
 						<ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
 							<image>
@@ -128,7 +128,7 @@
                         <Image url="@images/System/Hour%20menu/grade.png" />
                      </image>
                      <effect>
-                        <ColorAdjust contrast="-0.07" hue="-1.0" saturation="-1.0" />
+                        <ColorAdjust brightness="-0.61" />
                      </effect></ImageView>
                </graphic></Button>
 				<Button graphicTextGap="60.0" layoutX="-4.0" layoutY="213.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="191.0" style="-fx-background-color: transparent;" text="LER ARQUIVO">

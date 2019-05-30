@@ -1,3 +1,11 @@
 Button{
 	-fx-cursor: hand;
 }
+
+.menuprincipal__togglebutton--select{
+	-fx-background-color: #D31530;
+}
+
+.toggle-button{
+	-fx-background-color: transparent;
+}
